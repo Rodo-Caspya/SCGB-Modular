@@ -1,8 +1,15 @@
+import authRouter from "../modules/auth/router/index";
+// import cowRouter from "../modules/cow/router";
+// import users from "../modules/users/router";
 const routes = [
+  {
+    path: "/auth",
+
+    ...authRouter,
+  },
   {
     path: "/",
     component: () => import("layouts/MainLayout.vue"),
-    children: [{ path: "", component: () => import("pages/Index.vue") }],
   },
 
   // Always leave this as last one,

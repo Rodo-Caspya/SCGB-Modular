@@ -33,11 +33,11 @@ module.exports = configure(function (ctx) {
       // 'fontawesome-v5',
       // 'eva-icons',
       // 'themify',
-      // 'line-awesome',
+      "line-awesome",
       // 'roboto-font-latin-ext', // this or either 'roboto-font', NEVER both!
 
       "roboto-font", // optional, you are not bound to it
-      "material-icons", // optional, you are not bound to it
+      //"material-icons", // optional, you are not bound to it
     ],
 
     // Full list of options: https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-build
@@ -83,7 +83,7 @@ module.exports = configure(function (ctx) {
     framework: {
       config: {},
 
-      // iconSet: 'material-icons', // Quasar icon set
+      iconSet: "line-awesome", // Quasar icon set
       // lang: 'en-US', // Quasar language pack
 
       // For special cases outside of where the auto-import strategy can have an impact
@@ -94,7 +94,7 @@ module.exports = configure(function (ctx) {
       // directives: [],
 
       // Quasar plugins
-      plugins: [],
+      plugins: ["Dialog", "Notify"],
     },
 
     // animations: 'all', // --- includes all animations
