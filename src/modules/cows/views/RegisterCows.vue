@@ -24,9 +24,10 @@
       <q-btn
         v-model="tab"
         color="positive"
+        icon="las la-plus-circle"
         label="Agregar vaca"
         class="q-ma-md"
-        name="two"
+        @click="tab = 'two'"
       />
       <q-separator />
 
