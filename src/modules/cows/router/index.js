@@ -7,7 +7,7 @@ export default {
       path: "/register-cows",
       name: "register-cows",
       component: () =>
-        import(/* webpackChunkName: "Login" */ "../views/RegisterCows.vue"),
+        import(/* webpackChunkName: "Login" */ "../views/CowView.vue"),
     },
     {
       path: "/get-cows",
