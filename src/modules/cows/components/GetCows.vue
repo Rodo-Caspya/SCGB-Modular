@@ -32,6 +32,78 @@
         <td class="text-right">87</td>
       </tr>
       <tr>
+        <td class="text-left">Frozen Yogurt</td>
+        <td class="text-right">159</td>
+        <td class="text-right">6</td>
+        <td class="text-right">24</td>
+        <td class="text-right">4</td>
+        <td class="text-right">87</td>
+      </tr>
+      <tr>
+        <td class="text-left">
+          <q-btn
+            class="q-mr-md"
+            color="green-7"
+            label="Editar"
+            @click="onClick"
+          />
+          Frozen Yogurt
+        </td>
+        <td class="text-right">159</td>
+        <td class="text-right">6</td>
+        <td class="text-right">24</td>
+        <td class="text-right">4</td>
+        <td class="text-right">87</td>
+      </tr>
+      <tr>
+        <td class="text-left">Frozen Yogurt</td>
+        <td class="text-right">159</td>
+        <td class="text-right">6</td>
+        <td class="text-right">24</td>
+        <td class="text-right">4</td>
+        <td class="text-right">87</td>
+      </tr>
+      <tr>
+        <td class="text-left">Frozen Yogurt</td>
+        <td class="text-right">159</td>
+        <td class="text-right">6</td>
+        <td class="text-right">24</td>
+        <td class="text-right">4</td>
+        <td class="text-right">87</td>
+      </tr>
+      <tr>
+        <td class="text-left">Frozen Yogurt</td>
+        <td class="text-right">159</td>
+        <td class="text-right">6</td>
+        <td class="text-right">24</td>
+        <td class="text-right">4</td>
+        <td class="text-right">87</td>
+      </tr>
+      <tr>
+        <td class="text-left">Frozen Yogurt</td>
+        <td class="text-right">159</td>
+        <td class="text-right">6</td>
+        <td class="text-right">24</td>
+        <td class="text-right">4</td>
+        <td class="text-right">87</td>
+      </tr>
+      <tr>
+        <td class="text-left">Frozen Yogurt</td>
+        <td class="text-right">159</td>
+        <td class="text-right">6</td>
+        <td class="text-right">24</td>
+        <td class="text-right">4</td>
+        <td class="text-right">87</td>
+      </tr>
+      <tr>
+        <td class="text-left">Frozen Yogurt</td>
+        <td class="text-right">159</td>
+        <td class="text-right">6</td>
+        <td class="text-right">24</td>
+        <td class="text-right">4</td>
+        <td class="text-right">87</td>
+      </tr>
+      <tr>
         <td class="text-left">Ice cream sandwich</td>
         <td class="text-right">237</td>
         <td class="text-right">9</td>
@@ -46,6 +118,14 @@
         <td class="text-right">23</td>
         <td class="text-right">6</td>
         <td class="text-right">337</td>
+      </tr>
+      <tr>
+        <td class="text-left">Frozen Yogurt</td>
+        <td class="text-right">159</td>
+        <td class="text-right">6</td>
+        <td class="text-right">24</td>
+        <td class="text-right">4</td>
+        <td class="text-right">87</td>
       </tr>
       <tr>
         <td class="text-left">Cupcake</td>

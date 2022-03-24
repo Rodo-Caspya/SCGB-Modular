@@ -139,7 +139,7 @@ export default defineComponent({
 }
 
 .fila {
-  height: 90vh;
+  height: 100vh;
 }
 
 .logo-container {

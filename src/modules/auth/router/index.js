@@ -1,7 +1,7 @@
 export default {
   name: "auth",
   component: () =>
-    import(/* webpackChunkName: "Auth Layout" */ "layouts/MainLayout.vue"),
+    import(/* webpackChunkName: "Auth Layout" */ "layouts/loginLayout.vue"),
   children: [
     {
       path: "/",

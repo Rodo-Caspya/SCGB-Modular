@@ -4,16 +4,14 @@ export default {
     import(/* webpackChunkName: "Auth Layout" */ "layouts/MainLayout.vue"),
   children: [
     {
-      path: "/register-cows",
-      name: "register-cows",
-      component: () =>
-        import(/* webpackChunkName: "Login" */ "../views/CowView.vue"),
+      path: "/cows",
+      redirect: "get-cows",
     },
     {
       path: "/get-cows",
       name: "get-cows",
       component: () =>
-        import(/* webpackChunkName: "get-cows" */ "../views/GetCows.vue"),
+        import(/* webpackChunkName: "Login" */ "../views/CowView.vue"),
     },
   ],
 };

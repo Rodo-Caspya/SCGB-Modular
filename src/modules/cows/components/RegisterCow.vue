@@ -1,6 +1,10 @@
 <template>
   <div class="q-pa-md">
-    <q-form class="q-gutter-md row items-start">
+    <q-form
+      @submit="onSubmit"
+      @reset="onReset"
+      class="q-gutter-md row items-start justify-between"
+    >
       <q-input
         class="col-md-2 col-xs-12 col-sm-5"
         filled
@@ -70,7 +74,7 @@
         ]"
       />
 
-      <q-toggle v-model="accept" label="I accept the license and terms" />
+      <!-- <q-toggle v-model="accept" label="I accept the license and terms" /> -->
 
       <div>
         <q-btn label="Submit" type="submit" color="primary" />
@@ -79,7 +83,7 @@
           type="reset"
           color="primary"
           flat
-          class="q-ml-sm"
+          class="q-ml-sm content-end"
         />
       </div>
     </q-form>
