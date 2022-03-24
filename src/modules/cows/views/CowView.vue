@@ -21,7 +21,7 @@
 
       <q-tab-panels v-model="tab" animated>
         <q-tab-panel name="one">
-          <GetCows />
+          <GetCows @tab="tab = 'two'" />
         </q-tab-panel>
 
         <q-tab-panel name="two">

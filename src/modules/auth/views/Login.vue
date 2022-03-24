@@ -2,13 +2,9 @@
   <q-page>
     <div class="row justify-center fila items-center">
       <div
-        class="col-xs-12 col-sm-12 col-md-6 col-xl-3 shadow-10 container-form"
+        class="col-xs-12 col-sm-8 col-md-4 col-lg-4 col-xl-3 shadow-10 container-form"
       >
-        <q-form
-          @submit="onSubmit"
-          @reset="onReset"
-          class="q-gutter-xs col-xs-12 col-sm-12 col-md-6 q-pt-xl"
-        >
+        <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-xs q-pt-xl">
           <div class="row logo-container items-center">
             <q-img src="icons/logo.png " />
           </div>

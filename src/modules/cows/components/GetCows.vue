@@ -7,7 +7,7 @@
     icon="las la-plus-circle"
     label="Agregar vaca"
     class="q-ma-md"
-    @click="tab = 'two'"
+    @click="$emit('tab')"
   />
   <q-separator />
 
@@ -246,7 +246,12 @@
 </template>
 
 <script>
-export default {};
+export default {
+  emits: ["tab"],
+  setup(_, context) {
+    return {};
+  },
+};
 </script>
 
 <style></style>
