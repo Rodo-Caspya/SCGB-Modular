@@ -1,5 +1,6 @@
 import authRouter from "../modules/auth/router/index";
 import cowsRouter from "../modules/cows/router/index";
+import usersRouter from "../modules/users/router/index";
 
 // import cowRouter from "../modules/cow/router";
 // import users from "../modules/users/router";
@@ -11,6 +12,10 @@ const routes = [
   {
     path: "/cows",
     ...cowsRouter,
+  },
+  {
+    path: "/users",
+    ...usersRouter,
   },
 
   // Always leave this as last one,

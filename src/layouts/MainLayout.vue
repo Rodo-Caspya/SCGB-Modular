@@ -49,13 +49,13 @@ const linksList = [
     title: "Usuarios",
     caption: "Agregar usuarios",
     icon: "lar la-user",
-    link: "https://quasar.dev",
+    link: "#/users",
   },
   {
     title: "Vacas",
     caption: "Agregar vacas",
     icon: "las la-hat-cowboy",
-    link: "#/register-cows",
+    link: "#/cows",
   },
   {
     title: "Extra",

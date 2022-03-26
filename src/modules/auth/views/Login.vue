@@ -33,19 +33,6 @@
               (val) => (val && val.length > 0) || 'Este campo es obligatorio',
             ]"
           />
-          <q-input
-            class="q-pl-sm q-pr-sm"
-            filled
-            type="password"
-            v-model="userForm.password2"
-            label="Confirmar Contraseña *"
-            hint="Ingrese su contraseña de nuevo"
-            lazy-rules
-            :rules="[
-              (val) => (val && val.length > 0) || 'Este campo es obligatorio',
-              isSamePassword,
-            ]"
-          />
 
           <q-checkbox
             v-model="userForm.conditions"
