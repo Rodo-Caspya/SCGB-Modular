@@ -34,13 +34,13 @@
             ]"
           />
 
-          <q-checkbox
+          <!-- <q-checkbox
             v-model="userForm.conditions"
             label="Acepto los terminos y las condiciones"
             :style="
               userForm.errorInConditions && !userForm.conditions && 'color: red'
             "
-          />
+          /> -->
 
           <div class="row justify-center q-pl-sm q-pr-sm q-pt-md">
             <q-btn
