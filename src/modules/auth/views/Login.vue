@@ -13,6 +13,7 @@
             filled
             v-model="userForm.email"
             label="Correo electronico *"
+            hint="Ingrese su usuario"
             type="email"
             lazy-rules
             :rules="[
@@ -61,60 +62,32 @@
 </template>
 
 <script>
-import { defineComponent, ref } from "vue";
-import { useQuasar } from "quasar";
-export default defineComponent({
-  name: "Forms",
+import { ref } from "vue";
+import { useRouter } from "vue-router";
+import useAuth from "../composables/useAuth";
 
+import Swal from "sweetalert2";
+export default {
   setup() {
-    const $q = useQuasar();
-
+    const router = useRouter();
+    const { loginUser } = useAuth();
     const userForm = ref({
       email: "",
-      password1: "",
-      password2: "",
-      conditions: false,
-      errorInConditions: false,
+      password: "",
     });
+
     return {
       userForm,
-      onSubmit() {
-        userForm.value.errorInConditions = true;
 
-        if (!userForm.value.conditions) {
-          $q.notify({
-            message: "Debe de aceptar las condiciones",
-            icon: "las la-exclamation-circle",
-            color: "purple",
-            position: "top",
-            timeout: 5000,
-          });
-
-          userForm.value.errorInConditions = true;
-        }
-      },
-      onReset() {
-        userForm.value = {
-          email: "",
-          password1: "",
-          password2: "",
-          conditions: false,
-          errorInConditions: false,
-        };
-      },
-      isValidEmail(val) {
-        const emailPattern =
-          /^(?=[a-zA-Z0-9@._%+-]{6,254}$)[a-zA-Z0-9._%+-]{1,64}@(?:[a-zA-Z0-9-]{1,63}\.){1,8}[a-zA-Z]{2,63}$/;
-        return emailPattern.test(val) || "El correo no parece ser válido";
-      },
-      isSamePassword(val) {
-        return (
-          val === userForm.value.password1 || "Las contraseñas no coinciden"
-        );
+      onSubmit: async () => {
+        const { ok, message } = await loginUser(userForm.value);
+        console.log(ok, message);
+        if (!ok) Swal.fire("Error", message, "error");
+        else router.push({ name: "no-entry" });
       },
     };
   },
-});
+};
 </script>
 <style scoped>
 .container-form {
