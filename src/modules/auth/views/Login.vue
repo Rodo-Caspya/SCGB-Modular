@@ -4,29 +4,23 @@
       <div
         class="col-xs-12 col-sm-8 col-md-4 col-lg-4 col-xl-3 shadow-10 container-form"
       >
-        <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-xs q-pt-xl">
+        <q-form @submit="onSubmit" class="q-gutter-xs q-pt-xl">
           <div class="row logo-container items-center">
             <q-img src="icons/logo.png " />
           </div>
           <q-input
             class="q-pl-sm q-pr-sm"
             filled
-            v-model="userForm.email"
-            label="Correo electronico *"
+            v-model="userForm.username"
+            label="Usuario*"
             hint="Ingrese su usuario"
-            type="email"
-            lazy-rules
-            :rules="[
-              (val) => (val && val.length > 0) || 'Este campo es obligatorio',
-              isValidEmail,
-            ]"
+            type="text"
           />
-
           <q-input
             class="q-pl-sm q-pr-sm"
             filled
             type="password"
-            v-model="userForm.password1"
+            v-model="userForm.password"
             label="Contraseña *"
             hint="Ingrese su contraseña"
             lazy-rules
@@ -34,15 +28,6 @@
               (val) => (val && val.length > 0) || 'Este campo es obligatorio',
             ]"
           />
-
-          <!-- <q-checkbox
-            v-model="userForm.conditions"
-            label="Acepto los terminos y las condiciones"
-            :style="
-              userForm.errorInConditions && !userForm.conditions && 'color: red'
-            "
-          /> -->
-
           <div class="row justify-center q-pl-sm q-pr-sm q-pt-md">
             <q-btn
               label="INICIAR SESION"
@@ -71,10 +56,7 @@ export default {
   setup() {
     const router = useRouter();
     const { loginUser } = useAuth();
-    const userForm = ref({
-      email: "",
-      password: "",
-    });
+    const userForm = ref({});
 
     return {
       userForm,
@@ -83,7 +65,7 @@ export default {
         const { ok, message } = await loginUser(userForm.value);
         console.log(ok, message);
         if (!ok) Swal.fire("Error", message, "error");
-        else router.push({ name: "no-entry" });
+        else router.push({ name: "get-cows" });
       },
     };
   },
