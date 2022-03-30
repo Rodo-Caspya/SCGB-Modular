@@ -12,7 +12,7 @@ const routes = [
   },
   {
     path: "/cows",
-    beforeEnter: [isAuthenticatedGuard],
+    // beforeEnter: [isAuthenticatedGuard],
     ...cowsRouter,
   },
   {
