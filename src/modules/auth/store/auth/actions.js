@@ -20,7 +20,13 @@ export const signInUser = async ({ commit }, user) => {
       commit("loginUser", { user, idToken });
       return { ok: true };
     } else {
-      return { ok: false, message: data.err.name };
+      return {
+        ok: false,
+        message:
+          data.err.name == "IncorrectUsernameError"
+            ? "Usuario incorrecto"
+            : "Contraseña incorrecta",
+      };
     }
   } catch (error) {
     return { ok: false, message: data.err.name };
