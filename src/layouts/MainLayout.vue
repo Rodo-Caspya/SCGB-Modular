@@ -11,7 +11,7 @@
           @click="toggleLeftDrawer"
         />
 
-        <q-toolbar-title> Usuario </q-toolbar-title>
+        <q-toolbar-title> {{ username }} </q-toolbar-title>
 
         <div q-m>Administrador</div>
         <q-btn
@@ -90,7 +90,7 @@ const linksList = [
 ];
 
 import { defineComponent, ref } from "vue";
-
+import useAuth from "../modules/auth/composables/useAuth";
 export default defineComponent({
   name: "MainLayout",
 
@@ -100,8 +100,9 @@ export default defineComponent({
 
   setup() {
     const leftDrawerOpen = ref(false);
-
+    const { username } = useAuth();
     return {
+      username,
       essentialLinks: linksList,
       leftDrawerOpen,
       toggleLeftDrawer() {
