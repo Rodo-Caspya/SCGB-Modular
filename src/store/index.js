@@ -12,18 +12,18 @@ import authModule from "../modules/auth/store/auth";
  * async/await or return a Promise which resolves
  * with the Store instance.
  */
+const Store = createStore({
+  modules: {
+    authModule,
+    // example
+  },
+
+  // enable strict mode (adds overhead!)
+  // for dev mode and --debug builds only
+  strict: process.env.DEBUGGING,
+});
 
 export default store(function (/* { ssrContext } */) {
-  const Store = createStore({
-    modules: {
-      authModule,
-      // example
-    },
-
-    // enable strict mode (adds overhead!)
-    // for dev mode and --debug builds only
-    strict: process.env.DEBUGGING,
-  });
-
   return Store;
 });
+export { Store };

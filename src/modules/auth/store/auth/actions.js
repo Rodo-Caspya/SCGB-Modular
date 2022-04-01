@@ -45,7 +45,7 @@ export const checkAuthentication = async ({ commit }) => {
     //   };
 
     //   commit("loginUser", { user, idToken});
-
+    console.log("hi");
     return { ok: true };
   }
   // } catch (error) {
