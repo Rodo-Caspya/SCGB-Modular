@@ -11,7 +11,7 @@
           @click="toggleLeftDrawer"
         />
 
-        <q-toolbar-title> {{ username }} </q-toolbar-title>
+        <q-toolbar-title> {{ username.toUpperCase() }} </q-toolbar-title>
 
         <div q-m>Administrador</div>
         <q-btn
