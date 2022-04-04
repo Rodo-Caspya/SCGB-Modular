@@ -19,7 +19,7 @@
           <q-input
             class="q-pl-sm q-pr-sm"
             filled
-            type="password"
+            :type="isPwd ? 'password' : 'text'"
             v-model="userForm.password"
             label="Contraseña *"
             hint="Ingrese su contraseña"
@@ -27,7 +27,16 @@
             :rules="[
               (val) => (val && val.length > 0) || 'Este campo es obligatorio',
             ]"
-          />
+          >
+            <template v-slot:append>
+              <q-icon
+                :name="isPwd ? 'las la-low-vision' : 'las la-eye'"
+                class="cursor-pointer"
+                @click="isPwd = !isPwd"
+              />
+            </template>
+          </q-input>
+
           <div class="row justify-center q-pl-sm q-pr-sm q-pt-md">
             <q-btn
               label="INICIAR SESION"
@@ -60,7 +69,7 @@ export default {
 
     return {
       userForm,
-
+      isPwd: ref(true),
       onSubmit: async () => {
         const { ok, message } = await loginUser(userForm.value);
         if (!ok) Swal.fire("Error", message, "error");
