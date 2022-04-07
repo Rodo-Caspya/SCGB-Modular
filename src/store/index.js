@@ -1,7 +1,8 @@
 import { store } from "quasar/wrappers";
 import { createStore } from "vuex";
-import createPersistedState from 'vuex-persistedstate'
+import createPersistedState from "vuex-persistedstate";
 import authModule from "../modules/auth/store/auth";
+import cowModule from "../modules/cows/store/cows";
 
 // import example from './module-example'
 
@@ -16,6 +17,7 @@ import authModule from "../modules/auth/store/auth";
 const Store = createStore({
   modules: {
     authModule,
+    cowModule,
     // example
   },
   plugins: [createPersistedState()],

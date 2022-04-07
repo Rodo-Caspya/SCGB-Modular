@@ -91,20 +91,20 @@
 <script>
 import { useQuasar } from "quasar";
 import { ref } from "vue";
-import useAuth from "../composables/useCow";
+import useCow from "../composables/useCow";
 
 export default {
   setup() {
     const $q = useQuasar();
 
     const vacaForm = ref({});
-    const { loginUser } = useAuth();
+    const { createCow } = useCow();
 
     return {
       vacaForm,
 
       onSubmit: async () => {
-        const { ok, message } = await loginUser(vacaForm.value);
+        await createCow(vacaForm.value);
         // if (!ok) Swal.fire("Error", message, "error");
         // else router.push({ name: "get-cows" });
       },

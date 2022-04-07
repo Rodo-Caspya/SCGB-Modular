@@ -4,7 +4,7 @@ import { computed } from "vue";
 const useCow = () => {
   const store = useStore();
   const createCow = async (user) => {
-    const resp = await store.dispatch("authModule/createUser", user);
+    const resp = await store.dispatch("cowModule/registerCow", user);
 
     return resp;
   };
