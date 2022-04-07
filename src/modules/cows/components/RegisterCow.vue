@@ -8,21 +8,19 @@
       <q-input
         class="col-md-2 col-xs-12 col-sm-5"
         filled
-        type="number"
-        v-model="age"
-        label="Your age *"
+        type="text"
+        v-model="vacaForm.id"
+        label="ID de la vaca*"
+        hint="Identificación de la vaca"
         lazy-rules
-        :rules="[
-          (val) => (val !== null && val !== '') || 'Please type your age',
-          (val) => (val > 0 && val < 100) || 'Please type a real age',
-        ]"
+        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
       />
       <q-input
         class="col-md-2 col-xs-12 col-sm-5"
         filled
-        v-model="name"
-        label="Your name *"
-        hint="Name and surname"
+        v-model="vacaForm.type"
+        label="Tipo de vaca *"
+        hint="VACA / VAQUILLA"
         lazy-rules
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
       />
@@ -30,9 +28,10 @@
       <q-input
         class="col-md-2 col-xs-12 col-sm-5"
         filled
-        type="number"
-        v-model="age"
-        label="Your age *"
+        type="Edad"
+        v-model="vacaForm.edad"
+        label="Edad de la vaca *"
+        hint="Ingrese la edad de la vaca"
         lazy-rules
         :rules="[
           (val) => (val !== null && val !== '') || 'Please type your age',
@@ -42,26 +41,25 @@
       <q-input
         class="col-md-2 col-xs-12 col-sm-5"
         filled
-        type="number"
-        v-model="age"
-        label="Your age *"
+        type="text"
+        v-model="vacaForm.father"
+        label="Padre de la vaca*"
+        hint="Ingrese el id del padre de la vaca"
         lazy-rules
-        :rules="[
-          (val) => (val !== null && val !== '') || 'Please type your age',
-          (val) => (val > 0 && val < 100) || 'Please type a real age',
-        ]"
+        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
       />
       <q-input
         class="col-md-2 col-xs-12 col-sm-5"
         filled
-        v-model="name"
-        label="Your name *"
-        hint="Name and surname"
+        type="text"
+        v-model="vacaForm.mother"
+        label="Madre de la vaca*"
+        hint="Ingrese el id de la madre de la vaca"
         lazy-rules
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
       />
 
-      <q-input
+      <!-- <q-input
         class="col-md-2 col-xs-12 col-sm-5"
         filled
         type="number"
@@ -72,7 +70,7 @@
           (val) => (val !== null && val !== '') || 'Please type your age',
           (val) => (val > 0 && val < 100) || 'Please type a real age',
         ]"
-      />
+      /> -->
 
       <!-- <q-toggle v-model="accept" label="I accept the license and terms" /> -->
 
@@ -93,42 +91,25 @@
 <script>
 import { useQuasar } from "quasar";
 import { ref } from "vue";
+import useAuth from "../composables/useCow";
 
 export default {
   setup() {
     const $q = useQuasar();
 
-    const name = ref(null);
-    const age = ref(null);
-    const accept = ref(false);
+    const vacaForm = ref({});
+    const { loginUser } = useAuth();
 
     return {
-      name,
-      age,
-      accept,
+      vacaForm,
 
-      onSubmit() {
-        if (accept.value !== true) {
-          $q.notify({
-            color: "red-5",
-            textColor: "white",
-            icon: "warning",
-            message: "You need to accept the license and terms first",
-          });
-        } else {
-          $q.notify({
-            color: "green-4",
-            textColor: "white",
-            icon: "cloud_done",
-            message: "Submitted",
-          });
-        }
+      onSubmit: async () => {
+        const { ok, message } = await loginUser(vacaForm.value);
+        // if (!ok) Swal.fire("Error", message, "error");
+        // else router.push({ name: "get-cows" });
       },
-
       onReset() {
-        name.value = null;
-        age.value = null;
-        accept.value = false;
+        vacaForm = null;
       },
     };
   },
