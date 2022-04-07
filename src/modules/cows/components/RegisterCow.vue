@@ -92,21 +92,23 @@
 import { useQuasar } from "quasar";
 import { ref } from "vue";
 import useCow from "../composables/useCow";
-
+import Swal from "sweetalert2";
 export default {
   setup() {
     const $q = useQuasar();
 
-    const vacaForm = ref({});
+    let vacaForm = ref({});
     const { createCow } = useCow();
 
     return {
       vacaForm,
 
       onSubmit: async () => {
-        await createCow(vacaForm.value);
-        // if (!ok) Swal.fire("Error", message, "error");
-        // else router.push({ name: "get-cows" });
+        const { ok, message } = await createCow(vacaForm.value);
+        console.log(ok);
+        if (!ok) Swal.fire("Error", message, "error");
+        else Swal.fire("Registro exitoso", message, "success");
+        vacaForm = null;
       },
       onReset() {
         vacaForm = null;
