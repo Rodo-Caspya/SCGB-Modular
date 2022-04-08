@@ -93,13 +93,7 @@ export default {
         console.log(ok);
         if (!ok) Swal.fire("Error", message, "error");
         else Swal.fire("Registro exitoso", message, "success");
-        vacaForm.value = {
-          id: "",
-          type: "",
-          edad: "",
-          father: "",
-          mother: "",
-        };
+        // onReset()
       },
       onReset() {
         vacaForm.value = {
