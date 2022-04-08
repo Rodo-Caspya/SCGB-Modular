@@ -11,7 +11,9 @@ export const signInUser = async ({ commit }, user) => {
     const { data } = await authApi.post("/login", {
       username,
       password,
-    }); //se manda el body como parametros
+    });
+    console.log(data);
+    //se manda el body como parametros
     // const { displayName, idToken, refreshToken } = data;
     // user.name = displayName;
     if (data.success == true) {
