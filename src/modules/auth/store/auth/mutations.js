@@ -3,6 +3,7 @@
 // }
 
 export const loginUser = (state, { user, idToken }) => {
+  console.log("si llega");
   if (idToken) {
     localStorage.setItem("idToken", idToken);
     state.idToken = idToken;
