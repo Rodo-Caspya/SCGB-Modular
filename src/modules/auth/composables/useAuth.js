@@ -29,6 +29,7 @@ const useAuth = () => {
     logout,
     authStatus: computed(() => store.getters["authModule/currentState"]),
     username: computed(() => store.getters["authModule/username"]),
+    isAdmin: computed(() => store.getters["authModule/isAdmin"]),
   };
 };
 

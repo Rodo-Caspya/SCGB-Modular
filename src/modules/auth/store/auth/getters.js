@@ -6,3 +6,7 @@
 export const username = (state) => {
   return state.user?.username || "";
 };
+
+export const isAdmin = (state) => {
+  return state.admin;
+};
