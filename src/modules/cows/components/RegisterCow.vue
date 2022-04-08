@@ -59,21 +59,6 @@
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
       />
 
-      <!-- <q-input
-        class="col-md-2 col-xs-12 col-sm-5"
-        filled
-        type="number"
-        v-model="age"
-        label="Your age *"
-        lazy-rules
-        :rules="[
-          (val) => (val !== null && val !== '') || 'Please type your age',
-          (val) => (val > 0 && val < 100) || 'Please type a real age',
-        ]"
-      /> -->
-
-      <!-- <q-toggle v-model="accept" label="I accept the license and terms" /> -->
-
       <div>
         <q-btn label="Submit" type="submit" color="primary" />
         <q-btn
@@ -108,10 +93,22 @@ export default {
         console.log(ok);
         if (!ok) Swal.fire("Error", message, "error");
         else Swal.fire("Registro exitoso", message, "success");
-        vacaForm = null;
+        vacaForm.value = {
+          id: "",
+          type: "",
+          edad: "",
+          father: "",
+          mother: "",
+        };
       },
       onReset() {
-        vacaForm = null;
+        vacaForm.value = {
+          id: "",
+          type: "",
+          edad: "",
+          father: "",
+          mother: "",
+        };
       },
     };
   },
