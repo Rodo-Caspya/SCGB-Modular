@@ -13,7 +13,7 @@
           class="col-xs-3 col-sm-6 col-md-5 col-md-6"
         />
         <q-tab
-          label="Agregar vaca"
+          :label="editCow"
           name="two"
           class="col-xs-3 col-sm-6 col-md-5 col-md-6"
         />
@@ -34,6 +34,9 @@
 
 <script>
 import { ref, defineAsyncComponent } from "vue";
+// import { useStore } from "vuex";
+import useCow from "../composables/useCow";
+
 export default {
   name: "CowView",
   components: {
@@ -42,9 +45,14 @@ export default {
       import("../components/RegisterCow.vue")
     ),
   },
+
   setup() {
+    // const store = useStore();
+    const { editCow } = useCow();
+
     return {
       tab: ref("one"),
+      editCow,
     };
   },
 };

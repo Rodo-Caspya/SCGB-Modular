@@ -3,11 +3,13 @@ import { computed, onBeforeMount } from "vue";
 
 const useCow = () => {
   const store = useStore();
-  const createCow = async (user) => {
-    const resp = await store.dispatch("cowModule/registerCow", user);
+  const createCow = async (cow) => {
+    console.log("cow", cow.id);
+    const resp = await store.dispatch("cowModule/registerCow", cow);
 
     return resp;
   };
+
   const getCows = async () => {
     await store.dispatch("cowModule/getCows");
   };
@@ -17,6 +19,7 @@ const useCow = () => {
 
   return {
     cows: computed(() => store.state.cowModule.cows),
+    editCow: computed(() => store.state.cowModule.editCow),
     createCow,
     columns: [
       {
@@ -25,12 +28,13 @@ const useCow = () => {
         align: "left",
       },
       {
-        name: "_id",
+        name: "id",
         align: "left",
         label: "ID vaca",
         field: "_id",
         sortable: true,
       },
+      { name: "age", label: "Edad", field: "age", sortable: true },
       { name: "Tipo", label: "Tipo de vaca", field: "type", sortable: true },
       { name: "Padre", label: "Padre", field: "father" },
       { name: "Madre", label: "Madre", field: "mother" },

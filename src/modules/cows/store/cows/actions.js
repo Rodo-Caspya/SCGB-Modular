@@ -5,9 +5,10 @@
 import cowsApi from "../../../../api/cowsApi";
 
 export const registerCow = async ({ commit }, cow) => {
+  console.log("hh", cow);
   try {
     const { data } = await cowsApi.post("/ingresar", cow); //se manda el body como parametros
-
+    console.log("data", data);
     if (data.success == true) {
       return { ok: true };
     } else {

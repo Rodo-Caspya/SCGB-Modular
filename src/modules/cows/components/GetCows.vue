@@ -35,6 +35,7 @@
             class="q-mr-md"
             color="green-7"
             icon="las la-edit"
+            @click="updateCow(props['row'], 'Editar vaca')"
           />
           <q-btn
             dense
@@ -44,28 +45,6 @@
             icon="las la-trash"
             @click="deleteCow(props['row'])"
           />
-          <!-- <q-btn
-            size="md"
-            class="q-ml-sm"
-            @click="deleteCompany(props['row'])"
-            dense
-            outline
-            align="between"
-            color="negative"
-            icon="las la-trash"
-            >Eliminar</q-btn
-          >
-          <q-btn
-            size="md"
-            class="q-ml-sm"
-            @click="updateCompany(props['row'])"
-            dense
-            outline
-            align="between"
-            color="positive"
-            icon="las la-edit"
-            >Editar</q-btn
-          > -->
         </q-td>
       </template>
       <template v-slot:top-right>
@@ -110,10 +89,11 @@ export default {
         await store.dispatch("cowModule/deleteCow", cow);
         await store.dispatch("cowModule/getCows");
       },
-      updateCow: async (patient) => {
-        store.commit("patient/setPatientEditing", true);
-        store.commit("patient/setTabPatient", "form");
-        store.commit("patient/setPatient", patient);
+      updateCow: async (cow, edit) => {
+        context.emit("tab");
+        store.commit("cowModule/setCow", cow);
+        store.commit("cowModule/setEdit", edit);
+        store.commit("cowModule/setCowEditing", true);
       },
     };
   },

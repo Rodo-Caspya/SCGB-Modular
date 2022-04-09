@@ -12,7 +12,7 @@ export const signInUser = async ({ commit }, user) => {
       username,
       password,
     });
-    console.log(data);
+
     //se manda el body como parametros
     // const { displayName, idToken, refreshToken } = data;
     // user.name = displayName;
@@ -20,7 +20,6 @@ export const signInUser = async ({ commit }, user) => {
       delete user.password;
       const idToken = data.token;
       const isAdmin = data.admin;
-      console.log("holaaa");
 
       commit("loginUser", { user, idToken, isAdmin });
       return { ok: true };
@@ -39,14 +38,12 @@ export const signInUser = async ({ commit }, user) => {
 };
 
 export const checkAuthentication = async ({ commit }) => {
-  console.log("check");
   const idToken = localStorage.getItem("idToken");
 
   if (!idToken) {
     commit("logout");
     return { ok: false, message: "No hay token en la petición" };
   } else {
-    console.log("hi");
     return { ok: true };
   }
 };
@@ -80,7 +77,7 @@ export const register = async ({ commit }, user) => {
   //Con el Método Post con Axios hacemos el request al servidor de la base de Datos
   authApi.post("/signup", user).then((data) => {
     //peticion a la base de datos para registro
-    console.log(data);
+
     let errorR = {
       //inicializacion del error
       error: false,
@@ -90,7 +87,7 @@ export const register = async ({ commit }, user) => {
     let userR = data.data.status;
     if (data.data.status == "Registration Successful!") {
       //registro exitoso
-      console.log("Registro exitoso!");
+
       commit("setUserR", userR);
     } else {
       let errorR = {

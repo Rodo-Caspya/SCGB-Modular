@@ -4,5 +4,8 @@
 export default function () {
   return {
     cows: [],
+    cowSelected: {},
+    editCow: "Agregar vacacionnnn",
+    edit: false,
   };
 }

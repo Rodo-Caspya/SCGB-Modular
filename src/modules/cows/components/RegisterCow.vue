@@ -29,7 +29,7 @@
         class="col-md-2 col-xs-12 col-sm-5"
         filled
         type="Edad"
-        v-model="vacaForm.edad"
+        v-model="vacaForm.age"
         label="Edad de la vaca *"
         hint="Ingrese la edad de la vaca"
         lazy-rules
@@ -75,20 +75,27 @@
 
 <script>
 import { useQuasar } from "quasar";
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
+import { useStore } from "vuex";
 import useCow from "../composables/useCow";
 import Swal from "sweetalert2";
 export default {
   setup() {
+    const store = useStore();
     const $q = useQuasar();
 
     let vacaForm = ref({});
     const { createCow } = useCow();
-
+    onMounted(() => {
+      if (store.state.cowModule.edit) {
+        vacaForm.value = store.getters["cowModule/getCowSelected"];
+      }
+    });
     return {
       vacaForm,
 
       onSubmit: async () => {
+        console.log("se manda esto", vacaForm.value);
         const { ok, message } = await createCow(vacaForm.value);
         console.log(ok);
         if (!ok) Swal.fire("Error", message, "error");
@@ -99,7 +106,7 @@ export default {
         vacaForm.value = {
           id: "",
           type: "",
-          edad: "",
+          age: "",
           father: "",
           mother: "",
         };
