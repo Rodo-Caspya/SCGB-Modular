@@ -22,3 +22,24 @@ export const registerCow = async ({ commit }, cow) => {
     return { ok: false, message: data.message };
   }
 };
+export const getCows = async ({ commit }) => {
+  try {
+    const { data } = await cowsApi.get("/consultar");
+    console.log(data);
+    commit("setCows", data);
+  } catch (e) {
+    console.log("Error al obtener las vacas: ");
+    // } finally {
+    //   commit("setLoading");
+    // }
+  }
+};
+
+export async function deleteCow(_, cow) {
+  console.log("llego aqui");
+  try {
+    const { data } = await cowsApi.delete(`/delete/${cow._id}`);
+  } catch (e) {
+    console.log("Error al eliminar vaca", e);
+  }
+}

@@ -2,7 +2,6 @@
   <q-separator />
 
   <q-btn
-    v-model="tab"
     color="positive"
     icon="las la-plus-circle"
     label="Agregar vaca"
@@ -12,19 +11,62 @@
   <q-separator />
   <div class="q-pa-md">
     <q-table
-      title="Treats"
-      :rows="rows"
+      title="Listado de vacas"
       :columns="columns"
-      row-key="name"
+      :rows="cows"
+      :row-key="cows['_id']"
       :filter="filter"
+      rows-per-page-label="Registros por página"
+      :rows-per-page-options="[10, 20, 30]"
     >
+      <template v-slot:no-data>
+        <q-icon
+          class="q-ma-sm text-warning"
+          name="las la-exclamation-triangle"
+          size="2em"
+        />
+        <span class="text-subtitle2">Sin datos por mostrar.</span>
+      </template>
+      <template v-slot:body-cell-actions="props">
+        <q-td :props="props">
+          <q-btn
+            class="q-mr-md"
+            color="green-7"
+            icon="las la-edit"
+            @click="deleteCow(props['row'])"
+          />
+          <q-btn class="q-mr-md" color="red" icon="las la-trash" />
+          <!-- <q-btn
+            size="md"
+            class="q-ml-sm"
+            @click="deleteCompany(props['row'])"
+            dense
+            outline
+            align="between"
+            color="negative"
+            icon="las la-trash"
+            >Eliminar</q-btn
+          >
+          <q-btn
+            size="md"
+            class="q-ml-sm"
+            @click="updateCompany(props['row'])"
+            dense
+            outline
+            align="between"
+            color="positive"
+            icon="las la-edit"
+            >Editar</q-btn
+          > -->
+        </q-td>
+      </template>
       <template v-slot:top-right>
         <q-input
           borderless
           dense
-          debounce="300"
+          debounce="500"
           v-model="filter"
-          placeholder="Search"
+          placeholder="Buscar"
         >
           <template v-slot:append>
             <q-icon name="las la-search" />
@@ -43,87 +85,29 @@
 
 <script>
 import { ref } from "vue";
-const columns = [
-  {
-    name: "ID vaca",
-    align: "left",
-    label: "ID vaca",
-    field: "calories",
-    sortable: true,
-  },
-  { name: "fat", label: "Fat (g)", field: "fat", sortable: true },
-  { name: "carbs", label: "Carbs (g)", field: "carbs" },
-];
+import { useStore } from "vuex";
+import useCow from "../composables/useCow";
 
-const rows = [
-  {
-    name: "Frozen Yogurt",
-    calories: 159,
-    fat: 6.0,
-    carbs: 24,
-  },
-  {
-    name: "Ice cream sandwich",
-    calories: 237,
-    fat: 9.0,
-    carbs: 37,
-  },
-  {
-    name: "Eclair",
-    calories: 262,
-    fat: 16.0,
-    carbs: 23,
-  },
-  {
-    name: "Cupcake",
-    calories: 305,
-    fat: 3.7,
-    carbs: 67,
-  },
-  {
-    name: "Gingerbread",
-    calories: 356,
-    fat: 16.0,
-    carbs: 49,
-  },
-  {
-    name: "Jelly bean",
-    calories: 375,
-    fat: 0.0,
-    carbs: 94,
-  },
-  {
-    name: "Lollipop",
-    calories: 392,
-    fat: 0.2,
-    carbs: 98,
-  },
-  {
-    name: "Honeycomb",
-    calories: 408,
-    fat: 3.2,
-    carbs: 87,
-  },
-  {
-    name: "Donut",
-    calories: 452,
-    fat: 25.0,
-    carbs: 51,
-  },
-  {
-    name: "KitKat",
-    calories: 518,
-    fat: 26.0,
-    carbs: 65,
-  },
-];
 export default {
   emits: ["tab"],
   setup(_, context) {
+    const store = useStore();
+    const { cows, columns } = useCow();
+
     return {
       filter: ref(""),
       columns,
-      rows,
+      cows,
+      deleteCow: async (cow) => {
+        console.log("hi");
+        await store.dispatch("cowModule/deleteCow", cow);
+        // await store.dispatch("cowModule/getCows");
+      },
+      updateCow: async (patient) => {
+        store.commit("patient/setPatientEditing", true);
+        store.commit("patient/setTabPatient", "form");
+        store.commit("patient/setPatient", patient);
+      },
     };
   },
 };

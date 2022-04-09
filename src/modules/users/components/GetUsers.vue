@@ -2,7 +2,6 @@
   <q-separator />
 
   <q-btn
-    v-model="tab"
     color="positive"
     icon="las la-plus-circle"
     label="Agregar Usuario"
@@ -15,12 +14,8 @@
     <thead>
       <tr>
         <th class="text-left">
-          <q-btn
-            class="q-mr-md"
-            color="green-7"
-            label="Editar"
-            @click="onClick"
-          />Dessert (100g serving)
+          <q-btn class="q-mr-md" color="green-7" label="Editar" />Dessert (100g
+          serving)
         </th>
         <th class="text-right">Calories</th>
         <th class="text-right">Fat (g)</th>
@@ -32,12 +27,7 @@
     <tbody>
       <tr>
         <td class="text-left">
-          <q-btn
-            class="q-mr-md"
-            color="green-7"
-            label="Editar"
-            @click="onClick"
-          />Frozen Yogurt
+          <q-btn class="q-mr-md" color="green-7" label="Editar" />Frozen Yogurt
         </td>
         <td class="text-right">159</td>
         <td class="text-right">6</td>
@@ -47,12 +37,7 @@
       </tr>
       <tr>
         <td class="text-left">
-          <q-btn
-            class="q-mr-md"
-            color="green-7"
-            label="Editar"
-            @click="onClick"
-          />Frozen Yogurt
+          <q-btn class="q-mr-md" color="green-7" label="Editar" />Frozen Yogurt
         </td>
         <td class="text-right">159</td>
         <td class="text-right">6</td>
@@ -62,12 +47,7 @@
       </tr>
       <tr>
         <td class="text-left">
-          <q-btn
-            class="q-mr-md"
-            color="green-7"
-            label="Editar"
-            @click="onClick"
-          />
+          <q-btn class="q-mr-md" color="green-7" label="Editar" />
           Frozen Yogurt
         </td>
         <td class="text-right">159</td>
@@ -78,12 +58,7 @@
       </tr>
       <tr>
         <td class="text-left">
-          <q-btn
-            class="q-mr-md"
-            color="green-7"
-            label="Editar"
-            @click="onClick"
-          />Frozen Yogurt
+          <q-btn class="q-mr-md" color="green-7" label="Editar" />Frozen Yogurt
         </td>
         <td class="text-right">159</td>
         <td class="text-right">6</td>
@@ -93,12 +68,7 @@
       </tr>
       <tr>
         <td class="text-left">
-          <q-btn
-            class="q-mr-md"
-            color="green-7"
-            label="Editar"
-            @click="onClick"
-          />Frozen Yogurt
+          <q-btn class="q-mr-md" color="green-7" label="Editar" />Frozen Yogurt
         </td>
         <td class="text-right">159</td>
         <td class="text-right">6</td>
@@ -108,12 +78,7 @@
       </tr>
       <tr>
         <td class="text-left">
-          <q-btn
-            class="q-mr-md"
-            color="green-7"
-            label="Editar"
-            @click="onClick"
-          />Frozen Yogurt
+          <q-btn class="q-mr-md" color="green-7" label="Editar" />Frozen Yogurt
         </td>
         <td class="text-right">159</td>
         <td class="text-right">6</td>
@@ -123,12 +88,7 @@
       </tr>
       <tr>
         <td class="text-left">
-          <q-btn
-            class="q-mr-md"
-            color="green-7"
-            label="Editar"
-            @click="onClick"
-          />Frozen Yogurt
+          <q-btn class="q-mr-md" color="green-7" label="Editar" />Frozen Yogurt
         </td>
         <td class="text-right">159</td>
         <td class="text-right">6</td>
@@ -138,12 +98,7 @@
       </tr>
       <tr>
         <td class="text-left">
-          <q-btn
-            class="q-mr-md"
-            color="green-7"
-            label="Editar"
-            @click="onClick"
-          />Frozen Yogurt
+          <q-btn class="q-mr-md" color="green-7" label="Editar" />Frozen Yogurt
         </td>
         <td class="text-right">159</td>
         <td class="text-right">6</td>
@@ -153,12 +108,7 @@
       </tr>
       <tr>
         <td class="text-left">
-          <q-btn
-            class="q-mr-md"
-            color="green-7"
-            label="Editar"
-            @click="onClick"
-          />Frozen Yogurt
+          <q-btn class="q-mr-md" color="green-7" label="Editar" />Frozen Yogurt
         </td>
         <td class="text-right">159</td>
         <td class="text-right">6</td>
@@ -168,12 +118,8 @@
       </tr>
       <tr>
         <td class="text-left">
-          <q-btn
-            class="q-mr-md"
-            color="green-7"
-            label="Editar"
-            @click="onClick"
-          />Ice cream sandwich
+          <q-btn class="q-mr-md" color="green-7" label="Editar" />Ice cream
+          sandwich
         </td>
         <td class="text-right">237</td>
         <td class="text-right">9</td>
@@ -183,12 +129,7 @@
       </tr>
       <tr>
         <td class="text-left">
-          <q-btn
-            class="q-mr-md"
-            color="green-7"
-            label="Editar"
-            @click="onClick"
-          />Eclair
+          <q-btn class="q-mr-md" color="green-7" label="Editar" />Eclair
         </td>
         <td class="text-right">262</td>
         <td class="text-right">16</td>
@@ -198,12 +139,7 @@
       </tr>
       <tr>
         <td class="text-left">
-          <q-btn
-            class="q-mr-md"
-            color="green-7"
-            label="Editar"
-            @click="onClick"
-          />Frozen Yogurt
+          <q-btn class="q-mr-md" color="green-7" label="Editar" />Frozen Yogurt
         </td>
         <td class="text-right">159</td>
         <td class="text-right">6</td>
@@ -213,12 +149,7 @@
       </tr>
       <tr>
         <td class="text-left">
-          <q-btn
-            class="q-mr-md"
-            color="green-7"
-            label="Editar"
-            @click="onClick"
-          />Cupcake
+          <q-btn class="q-mr-md" color="green-7" label="Editar" />Cupcake
         </td>
         <td class="text-right">305</td>
         <td class="text-right">3.7</td>
@@ -228,12 +159,7 @@
       </tr>
       <tr>
         <td class="text-left">
-          <q-btn
-            class="q-mr-md"
-            color="green-7"
-            label="Editar"
-            @click="onClick"
-          />Gingerbread
+          <q-btn class="q-mr-md" color="green-7" label="Editar" />Gingerbread
         </td>
         <td class="text-right">356</td>
         <td class="text-right">16</td>
