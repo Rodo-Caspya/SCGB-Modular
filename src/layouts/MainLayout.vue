@@ -13,7 +13,7 @@
 
         <q-toolbar-title> {{ username.toUpperCase() }} </q-toolbar-title>
 
-        <div q-m>Administrador</div>
+        <div q-m>{{ isAdmin ? "ADMINISTRADOR" : "SIN PERMISOS" }}</div>
         <q-btn
           class="q-ml-md q-mr-sm"
           round
@@ -25,7 +25,9 @@
 
     <q-drawer v-model="leftDrawerOpen" show-if-above bordered>
       <q-list>
-        <q-item-label header> Control </q-item-label>
+        <q-item-label header>
+          Bienvenido {{ username.toUpperCase() }}
+        </q-item-label>
 
         <EssentialLink
           v-for="link in essentialLinks"
@@ -100,9 +102,11 @@ export default defineComponent({
 
   setup() {
     const leftDrawerOpen = ref(false);
-    const { username } = useAuth();
+    const { username, isAdmin } = useAuth();
+
     return {
       username,
+      isAdmin,
       essentialLinks: linksList,
       leftDrawerOpen,
       toggleLeftDrawer() {

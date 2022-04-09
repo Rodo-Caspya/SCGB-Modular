@@ -4,7 +4,7 @@
 
 export default () => ({
   status: "authenticating", //'autenticated', 'not-authenticated', 'authenticating'
-  admin: null,
+  admin: false,
   user: null,
   idToken: null,
 });

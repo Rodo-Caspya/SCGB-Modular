@@ -2,13 +2,14 @@
 
 // }
 
-export const loginUser = (state, { user, idToken }) => {
+export const loginUser = (state, { user, idToken, isAdmin }) => {
   console.log("si llega");
   if (idToken) {
     localStorage.setItem("idToken", idToken);
     state.idToken = idToken;
   }
   state.user = user;
+  state.admin = isAdmin;
   state.status = "authenticated";
 };
 

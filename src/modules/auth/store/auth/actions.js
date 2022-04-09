@@ -19,7 +19,10 @@ export const signInUser = async ({ commit }, user) => {
     if (data.success == true) {
       delete user.password;
       const idToken = data.token;
-      commit("loginUser", { user, idToken });
+      const isAdmin = data.admin;
+      console.log("holaaa");
+
+      commit("loginUser", { user, idToken, isAdmin });
       return { ok: true };
     } else {
       return {
