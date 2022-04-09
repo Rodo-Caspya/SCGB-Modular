@@ -9,7 +9,6 @@ export const registerCow = async ({ commit }, cow) => {
     const { data } = await cowsApi.post("/ingresar", cow); //se manda el body como parametros
 
     if (data.success == true) {
-      console.log("registro correcto");
       return { ok: true };
     } else {
       return {
@@ -25,7 +24,7 @@ export const registerCow = async ({ commit }, cow) => {
 export const getCows = async ({ commit }) => {
   try {
     const { data } = await cowsApi.get("/consultar");
-    console.log(data);
+
     commit("setCows", data);
   } catch (e) {
     console.log("Error al obtener las vacas: ");
@@ -36,7 +35,6 @@ export const getCows = async ({ commit }) => {
 };
 
 export async function deleteCow(_, cow) {
-  console.log("llego aqui");
   try {
     const { data } = await cowsApi.delete(`/delete/${cow._id}`);
   } catch (e) {

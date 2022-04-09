@@ -30,12 +30,20 @@
       <template v-slot:body-cell-actions="props">
         <q-td :props="props">
           <q-btn
+            dense
+            outline
             class="q-mr-md"
             color="green-7"
             icon="las la-edit"
+          />
+          <q-btn
+            dense
+            outline
+            class="q-mr-md"
+            color="red"
+            icon="las la-trash"
             @click="deleteCow(props['row'])"
           />
-          <q-btn class="q-mr-md" color="red" icon="las la-trash" />
           <!-- <q-btn
             size="md"
             class="q-ml-sm"
@@ -99,9 +107,8 @@ export default {
       columns,
       cows,
       deleteCow: async (cow) => {
-        console.log("hi");
         await store.dispatch("cowModule/deleteCow", cow);
-        // await store.dispatch("cowModule/getCows");
+        await store.dispatch("cowModule/getCows");
       },
       updateCow: async (patient) => {
         store.commit("patient/setPatientEditing", true);
