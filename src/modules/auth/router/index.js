@@ -1,3 +1,5 @@
+import isAuthenticatedGuard from "./auth-gard";
+
 export default {
   name: "auth",
   component: () =>

@@ -10,3 +10,7 @@ export const username = (state) => {
 export const isAdmin = (state) => {
   return state.admin;
 };
+
+export const isAuthenticated = (state) => {
+  return state.status;
+};

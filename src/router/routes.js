@@ -2,12 +2,16 @@ import authRouter from "../modules/auth/router/index";
 import cowsRouter from "../modules/cows/router/index";
 import usersRouter from "../modules/users/router/index";
 import isAuthenticatedGuard from "../modules/auth/router/auth-gard";
-// import { Store } from "../store";
+import isAuthenticated from "../modules/auth/router/authenticated-gard";
+import isAdmin from "../modules/auth/router/users-gard";
+import { Store } from "../store";
+console.log(Store.state.authModule.edit);
 // import cowRouter from "../modules/cow/router";
 // import users from "../modules/users/router";
 const routes = [
   {
     path: "/auth",
+    beforeEnter: [isAuthenticated],
     ...authRouter,
   },
   {
@@ -17,7 +21,7 @@ const routes = [
   },
   {
     path: "/users",
-    beforeEnter: [isAuthenticatedGuard],
+    beforeEnter: [isAuthenticatedGuard && isAdmin],
     ...usersRouter,
   },
 
