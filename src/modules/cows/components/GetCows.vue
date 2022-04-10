@@ -74,20 +74,30 @@
 import { ref } from "vue";
 import { useStore } from "vuex";
 import useCow from "../composables/useCow";
-
+import Swal from "sweetalert2";
 export default {
   emits: ["tab"],
   setup(_, context) {
     const store = useStore();
     const { cows, columns } = useCow();
-
     return {
       filter: ref(""),
       columns,
       cows,
+
       deleteCow: async (cow) => {
-        await store.dispatch("cowModule/deleteCow", cow);
-        await store.dispatch("cowModule/getCows");
+        const res = Swal.fire({
+          title: "Seguro que desea borrar este registro?",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#ff4040",
+          confirmButtonText: "Eliminar",
+          denyButtonText: "Cancelar",
+        });
+        if ((await res).isConfirmed) {
+          await store.dispatch("cowModule/deleteCow", cow);
+          await store.dispatch("cowModule/getCows");
+        }
       },
       updateCow: async (cow, edit) => {
         context.emit("tab");

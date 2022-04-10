@@ -6,15 +6,17 @@
       class="q-gutter-md row items-start justify-between"
     >
       <q-input
+        :disable="editing"
         class="col-md-2 col-xs-12 col-sm-5"
         filled
         type="text"
-        v-model="vacaForm.id"
+        v-model="vacaForm._id"
         label="ID de la vaca*"
         hint="Identificación de la vaca"
         lazy-rules
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
       />
+
       <q-input
         class="col-md-2 col-xs-12 col-sm-5"
         filled
@@ -60,7 +62,7 @@
       />
 
       <div>
-        <q-btn label="Submit" type="submit" color="primary" />
+        <q-btn label="Guardar" type="submit" color="green-7" />
         <q-btn
           label="Reset"
           type="reset"
@@ -75,7 +77,7 @@
 
 <script>
 import { useQuasar } from "quasar";
-import { ref, onMounted } from "vue";
+import { ref, onMounted, onUnmounted } from "vue";
 import { useStore } from "vuex";
 import useCow from "../composables/useCow";
 import Swal from "sweetalert2";
@@ -85,21 +87,37 @@ export default {
     const $q = useQuasar();
 
     let vacaForm = ref({});
-    const { createCow } = useCow();
+
+    const { createCow, updateCow, editing } = useCow();
     onMounted(() => {
-      if (store.state.cowModule.edit) {
+      if (editing) {
         vacaForm.value = store.getters["cowModule/getCowSelected"];
       }
     });
+    onUnmounted(() => {
+      if (editing) {
+        store.commit("cowModule/setCow", {});
+        store.commit("cowModule/setEdit", "Agregar vaca");
+        store.commit("cowModule/setCowEditing", false);
+      }
+    });
+
     return {
       vacaForm,
+      editing,
 
       onSubmit: async () => {
-        console.log("se manda esto", vacaForm.value);
-        const { ok, message } = await createCow(vacaForm.value);
-        console.log(ok);
-        if (!ok) Swal.fire("Error", message, "error");
-        else Swal.fire("Registro exitoso", message, "success");
+        if (!store.state.cowModule.edit) {
+          vacaForm.value.id = vacaForm.value._id;
+          const { ok, message } = await createCow(vacaForm.value);
+          if (!ok) Swal.fire("Error", message, "error");
+          else Swal.fire("Registro exitoso", message, "success");
+        } else {
+          const { ok, message } = await updateCow(vacaForm.value);
+          if (!ok) Swal.fire("Error", message, "error");
+          else Swal.fire("Registro actualizado", message, "success");
+        }
+
         // onReset()
       },
       onReset() {

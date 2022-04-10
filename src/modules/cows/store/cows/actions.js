@@ -5,10 +5,9 @@
 import cowsApi from "../../../../api/cowsApi";
 
 export const registerCow = async ({ commit }, cow) => {
-  console.log("hh", cow);
   try {
     const { data } = await cowsApi.post("/ingresar", cow); //se manda el body como parametros
-    console.log("data", data);
+
     if (data.success == true) {
       return { ok: true };
     } else {
@@ -25,7 +24,6 @@ export const registerCow = async ({ commit }, cow) => {
 export const getCows = async ({ commit }) => {
   try {
     const { data } = await cowsApi.get("/consultar");
-    console.log("dataCowws", data[0]._id);
 
     commit("setCows", data);
   } catch (e) {
@@ -35,6 +33,15 @@ export const getCows = async ({ commit }) => {
     // }
   }
 };
+export async function updateCow(_, cow) {
+  try {
+    await cowsApi.put(`/update/${cow._id}`, cow);
+    return { ok: true };
+  } catch (e) {
+    console.log("Error al editar vaca", e);
+    return { ok: false, message: "Error al editar vaca: " + e };
+  }
+}
 
 export async function deleteCow(_, cow) {
   try {

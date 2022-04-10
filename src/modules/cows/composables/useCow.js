@@ -4,7 +4,6 @@ import { computed, onBeforeMount } from "vue";
 const useCow = () => {
   const store = useStore();
   const createCow = async (cow) => {
-    console.log("cow", cow.id);
     const resp = await store.dispatch("cowModule/registerCow", cow);
 
     return resp;
@@ -13,6 +12,11 @@ const useCow = () => {
   const getCows = async () => {
     await store.dispatch("cowModule/getCows");
   };
+  const updateCow = async (cow) => {
+    const resp = await store.dispatch("cowModule/updateCow", cow);
+
+    return resp;
+  };
   onBeforeMount(async () => {
     await getCows();
   });
@@ -20,7 +24,9 @@ const useCow = () => {
   return {
     cows: computed(() => store.state.cowModule.cows),
     editCow: computed(() => store.state.cowModule.editCow),
+    editing: computed(() => store.state.cowModule.edit),
     createCow,
+    updateCow,
     columns: [
       {
         name: "actions",
