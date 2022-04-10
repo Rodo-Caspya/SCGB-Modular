@@ -25,6 +25,7 @@ export const registerCow = async ({ commit }, cow) => {
 export const getCows = async ({ commit }) => {
   try {
     const { data } = await cowsApi.get("/consultar");
+    console.log("dataCowws", data[0]._id);
 
     commit("setCows", data);
   } catch (e) {
