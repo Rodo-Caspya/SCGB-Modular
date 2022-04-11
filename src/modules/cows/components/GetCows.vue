@@ -92,7 +92,7 @@ export default {
           showCancelButton: true,
           confirmButtonColor: "#ff4040",
           confirmButtonText: "Eliminar",
-          denyButtonText: "Cancelar",
+          cancelButtonText: "Cancelar",
         });
         if ((await res).isConfirmed) {
           await store.dispatch("cowModule/deleteCow", cow);

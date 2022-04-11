@@ -1,7 +1,7 @@
 import { useStore } from "vuex";
 import { computed } from "vue";
 import { useRouter, useRoute } from "vue-router";
-
+import Swal from "sweetalert2";
 const useAuth = () => {
   const store = useStore();
   const router = useRouter();
@@ -21,10 +21,20 @@ const useAuth = () => {
     return resp;
   };
 
-  const logout = () => {
-    store.commit("authModule/logout");
-    store.commit("cowModule/clearCows");
-    router.push({ name: "login" });
+  const logout = async () => {
+    const res = Swal.fire({
+      title: "Cerrar Sesion",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonColor: "#ff4040",
+      confirmButtonText: "Cerrar",
+      cancelButtonText: "Cancelar",
+    });
+    if ((await res).isConfirmed) {
+      store.commit("authModule/logout");
+      store.commit("cowModule/clearCows");
+      router.push({ name: "login" });
+    }
   };
   return {
     checkAuthStatus,
