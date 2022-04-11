@@ -19,6 +19,7 @@
           round
           color="brown-5"
           icon="las la-sign-out-alt"
+          @click="logout"
         />
       </q-toolbar>
     </q-header>
@@ -92,6 +93,7 @@ const linksList = [
 ];
 
 import { defineComponent, ref } from "vue";
+
 import useAuth from "../modules/auth/composables/useAuth";
 export default defineComponent({
   name: "MainLayout",
@@ -102,9 +104,10 @@ export default defineComponent({
 
   setup() {
     const leftDrawerOpen = ref(false);
-    const { username, isAdmin } = useAuth();
+    const { username, isAdmin, logout } = useAuth();
 
     return {
+      logout,
       username,
       isAdmin,
       essentialLinks: linksList,

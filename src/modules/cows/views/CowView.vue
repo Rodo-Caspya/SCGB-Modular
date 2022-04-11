@@ -25,7 +25,7 @@
         </q-tab-panel>
 
         <q-tab-panel name="two">
-          <RegisterCow />
+          <RegisterCow @tab="tab = 'one'" />
         </q-tab-panel>
       </q-tab-panels>
     </q-card>

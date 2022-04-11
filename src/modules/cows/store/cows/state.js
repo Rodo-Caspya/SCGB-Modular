@@ -5,7 +5,7 @@ export default function () {
   return {
     cows: [],
     cowSelected: {},
-    editCow: "Agregar vacacionnnn",
+    editCow: "Agregar vaca",
     edit: false,
   };
 }

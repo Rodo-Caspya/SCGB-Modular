@@ -1,8 +1,11 @@
 import { useStore } from "vuex";
 import { computed } from "vue";
+import { useRouter, useRoute } from "vue-router";
 
 const useAuth = () => {
   const store = useStore();
+  const router = useRouter();
+  const route = useRoute();
   const createUser = async (user) => {
     const resp = await store.dispatch("authModule/createUser", user);
 
@@ -20,7 +23,8 @@ const useAuth = () => {
 
   const logout = () => {
     store.commit("authModule/logout");
-    store.commit("journalModule/clearEntries");
+    store.commit("cowModule/clearCows");
+    router.push({ name: "login" });
   };
   return {
     checkAuthStatus,

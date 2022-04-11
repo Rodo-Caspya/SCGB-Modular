@@ -82,7 +82,8 @@ import { useStore } from "vuex";
 import useCow from "../composables/useCow";
 import Swal from "sweetalert2";
 export default {
-  setup() {
+  emits: ["tab"],
+  setup(_, context) {
     const store = useStore();
     const $q = useQuasar();
 
@@ -111,11 +112,18 @@ export default {
           vacaForm.value.id = vacaForm.value._id;
           const { ok, message } = await createCow(vacaForm.value);
           if (!ok) Swal.fire("Error", message, "error");
-          else Swal.fire("Registro exitoso", message, "success");
+          else {
+            context.emit("tab");
+            Swal.fire("Registro exitoso", message, "success");
+          }
         } else {
           const { ok, message } = await updateCow(vacaForm.value);
           if (!ok) Swal.fire("Error", message, "error");
-          else Swal.fire("Registro actualizado", message, "success");
+          else {
+            context.emit("tab");
+
+            Swal.fire("Registro actualizado", message, "success");
+          }
         }
 
         // onReset()

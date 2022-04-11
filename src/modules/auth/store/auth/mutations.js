@@ -15,8 +15,8 @@ export const loginUser = (state, { user, idToken, isAdmin }) => {
 
 export const logout = (state) => {
   state.user = null;
-  state.idToken = null;
+  state.admin = false;
   state.status = "not-authenticated";
-
+  state.idToken = null;
   localStorage.removeItem("idToken");
 };

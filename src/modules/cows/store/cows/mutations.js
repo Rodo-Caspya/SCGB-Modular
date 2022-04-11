@@ -14,3 +14,10 @@ export const setCowEditing = (state, val) => {
 export function setCow(state, cow) {
   state.cowSelected = cow;
 }
+
+export function clearCows(state) {
+  state.cows = [];
+  state.cowSelected = {};
+  state.editCow = "Agregar vaca";
+  state.edit = false;
+}
