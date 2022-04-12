@@ -10,172 +10,76 @@
   />
   <q-separator />
 
-  <q-markup-table>
-    <thead>
-      <tr>
-        <th class="text-left">
-          <q-btn class="q-mr-md" color="green-7" label="Editar" />Dessert (100g
-          serving)
-        </th>
-        <th class="text-right">Calories</th>
-        <th class="text-right">Fat (g)</th>
-        <th class="text-right">Carbs (g)</th>
-        <th class="text-right">Protein (g)</th>
-        <th class="text-right">Sodium (mg)</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td class="text-left">
-          <q-btn class="q-mr-md" color="green-7" label="Editar" />Frozen Yogurt
-        </td>
-        <td class="text-right">159</td>
-        <td class="text-right">6</td>
-        <td class="text-right">24</td>
-        <td class="text-right">4</td>
-        <td class="text-right">87</td>
-      </tr>
-      <tr>
-        <td class="text-left">
-          <q-btn class="q-mr-md" color="green-7" label="Editar" />Frozen Yogurt
-        </td>
-        <td class="text-right">159</td>
-        <td class="text-right">6</td>
-        <td class="text-right">24</td>
-        <td class="text-right">4</td>
-        <td class="text-right">87</td>
-      </tr>
-      <tr>
-        <td class="text-left">
-          <q-btn class="q-mr-md" color="green-7" label="Editar" />
-          Frozen Yogurt
-        </td>
-        <td class="text-right">159</td>
-        <td class="text-right">6</td>
-        <td class="text-right">24</td>
-        <td class="text-right">4</td>
-        <td class="text-right">87</td>
-      </tr>
-      <tr>
-        <td class="text-left">
-          <q-btn class="q-mr-md" color="green-7" label="Editar" />Frozen Yogurt
-        </td>
-        <td class="text-right">159</td>
-        <td class="text-right">6</td>
-        <td class="text-right">24</td>
-        <td class="text-right">4</td>
-        <td class="text-right">87</td>
-      </tr>
-      <tr>
-        <td class="text-left">
-          <q-btn class="q-mr-md" color="green-7" label="Editar" />Frozen Yogurt
-        </td>
-        <td class="text-right">159</td>
-        <td class="text-right">6</td>
-        <td class="text-right">24</td>
-        <td class="text-right">4</td>
-        <td class="text-right">87</td>
-      </tr>
-      <tr>
-        <td class="text-left">
-          <q-btn class="q-mr-md" color="green-7" label="Editar" />Frozen Yogurt
-        </td>
-        <td class="text-right">159</td>
-        <td class="text-right">6</td>
-        <td class="text-right">24</td>
-        <td class="text-right">4</td>
-        <td class="text-right">87</td>
-      </tr>
-      <tr>
-        <td class="text-left">
-          <q-btn class="q-mr-md" color="green-7" label="Editar" />Frozen Yogurt
-        </td>
-        <td class="text-right">159</td>
-        <td class="text-right">6</td>
-        <td class="text-right">24</td>
-        <td class="text-right">4</td>
-        <td class="text-right">87</td>
-      </tr>
-      <tr>
-        <td class="text-left">
-          <q-btn class="q-mr-md" color="green-7" label="Editar" />Frozen Yogurt
-        </td>
-        <td class="text-right">159</td>
-        <td class="text-right">6</td>
-        <td class="text-right">24</td>
-        <td class="text-right">4</td>
-        <td class="text-right">87</td>
-      </tr>
-      <tr>
-        <td class="text-left">
-          <q-btn class="q-mr-md" color="green-7" label="Editar" />Frozen Yogurt
-        </td>
-        <td class="text-right">159</td>
-        <td class="text-right">6</td>
-        <td class="text-right">24</td>
-        <td class="text-right">4</td>
-        <td class="text-right">87</td>
-      </tr>
-      <tr>
-        <td class="text-left">
-          <q-btn class="q-mr-md" color="green-7" label="Editar" />Ice cream
-          sandwich
-        </td>
-        <td class="text-right">237</td>
-        <td class="text-right">9</td>
-        <td class="text-right">37</td>
-        <td class="text-right">4.3</td>
-        <td class="text-right">129</td>
-      </tr>
-      <tr>
-        <td class="text-left">
-          <q-btn class="q-mr-md" color="green-7" label="Editar" />Eclair
-        </td>
-        <td class="text-right">262</td>
-        <td class="text-right">16</td>
-        <td class="text-right">23</td>
-        <td class="text-right">6</td>
-        <td class="text-right">337</td>
-      </tr>
-      <tr>
-        <td class="text-left">
-          <q-btn class="q-mr-md" color="green-7" label="Editar" />Frozen Yogurt
-        </td>
-        <td class="text-right">159</td>
-        <td class="text-right">6</td>
-        <td class="text-right">24</td>
-        <td class="text-right">4</td>
-        <td class="text-right">87</td>
-      </tr>
-      <tr>
-        <td class="text-left">
-          <q-btn class="q-mr-md" color="green-7" label="Editar" />Cupcake
-        </td>
-        <td class="text-right">305</td>
-        <td class="text-right">3.7</td>
-        <td class="text-right">67</td>
-        <td class="text-right">4.3</td>
-        <td class="text-right">413</td>
-      </tr>
-      <tr>
-        <td class="text-left">
-          <q-btn class="q-mr-md" color="green-7" label="Editar" />Gingerbread
-        </td>
-        <td class="text-right">356</td>
-        <td class="text-right">16</td>
-        <td class="text-right">49</td>
-        <td class="text-right">3.9</td>
-        <td class="text-right">327</td>
-      </tr>
-    </tbody>
-  </q-markup-table>
+  <div class="q-pa-md">
+    <q-table
+      title="Listado de vacas"
+      :columns="columns"
+      :rows="users"
+      :row-key="users['_id']"
+      :filter="filter"
+      rows-per-page-label="Registros por página"
+      :rows-per-page-options="[10, 20, 30]"
+    >
+      <template v-slot:no-data>
+        <q-icon
+          class="q-ma-sm text-warning"
+          name="las la-exclamation-triangle"
+          size="2em"
+        />
+        <span class="text-subtitle2">Sin datos por mostrar.</span>
+      </template>
+      <template v-slot:body-cell-actions="props">
+        <q-td :props="props">
+          <q-btn
+            dense
+            outline
+            class="q-mr-md"
+            color="green-7"
+            icon="las la-edit"
+            @click="updateUser(props['row'], 'Editar vaca')"
+          />
+          <q-btn
+            dense
+            outline
+            class="q-mr-md"
+            color="red"
+            icon="las la-trash"
+            @click="deleteUser(props['row'])"
+          />
+        </q-td>
+      </template>
+      <template v-slot:top-right>
+        <q-input
+          borderless
+          dense
+          debounce="500"
+          v-model="filter"
+          placeholder="Buscar"
+        >
+          <template v-slot:append>
+            <q-icon name="las la-search" />
+          </template>
+        </q-input>
+      </template>
+    </q-table>
+  </div>
 </template>
 
 <script>
+import { ref } from "vue";
+import { useStore } from "vuex";
+import useUser from "../composables/useUsers";
+import Swal from "sweetalert2";
 export default {
   emits: ["tab"],
   setup(_, context) {
-    return {};
+    const store = useStore();
+    const { users, columns } = useUser();
+    return {
+      filter: ref(""),
+      columns,
+      users,
+    };
   },
 };
 </script>

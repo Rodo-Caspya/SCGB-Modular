@@ -3,6 +3,7 @@ import { createStore } from "vuex";
 import createPersistedState from "vuex-persistedstate";
 import authModule from "../modules/auth/store/auth";
 import cowModule from "../modules/cows/store/cows";
+import usersModule from "../modules/users/store/users";
 
 // import example from './module-example'
 
@@ -18,6 +19,7 @@ const Store = createStore({
   modules: {
     authModule,
     cowModule,
+    usersModule,
     // example
   },
   plugins: [createPersistedState()],
