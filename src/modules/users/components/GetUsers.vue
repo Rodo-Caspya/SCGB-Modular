@@ -79,6 +79,26 @@ export default {
       filter: ref(""),
       columns,
       users,
+      deleteUser: async (user) => {
+        const res = Swal.fire({
+          title: "Seguro que desea borrar este registro?",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#ff4040",
+          confirmButtonText: "Eliminar",
+          cancelButtonText: "Cancelar",
+        });
+        if ((await res).isConfirmed) {
+          await store.dispatch("usersModule/deleteUser", user);
+          await store.dispatch("usersModule/getUsers");
+        }
+      },
+      updateUser: async (user, edit) => {
+        context.emit("tab");
+        store.commit("usersModule/setUser", user);
+        store.commit("usersModule/setEdit", edit);
+        store.commit("usersModule/setUserEditing", true);
+      },
     };
   },
 };

@@ -11,6 +11,7 @@
   <q-separator />
   <div class="q-pa-md">
     <q-table
+
       title="Listado de vacas"
       :columns="columns"
       :rows="cows"

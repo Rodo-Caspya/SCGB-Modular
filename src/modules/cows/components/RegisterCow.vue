@@ -3,7 +3,7 @@
     <q-form
       @submit="onSubmit"
       @reset="onReset"
-      class="q-gutter-md row items-start justify-between"
+      class="q-gutter-y-md q-gutter-x-xs row items-start justify-between"
     >
       <q-input
         :disable="editing"
