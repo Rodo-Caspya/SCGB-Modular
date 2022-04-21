@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const cowsApi = axios.create({
-  baseURL: "http://localhost:9000/vacas",
+  baseURL: "https://back-end-modular.herokuapp.com/vacas",
 });
 
 export default cowsApi;
