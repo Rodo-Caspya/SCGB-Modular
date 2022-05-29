@@ -11,7 +11,6 @@
   <q-separator />
   <div class="q-pa-md">
     <q-table
-
       title="Listado de vacas"
       :columns="columns"
       :rows="cows"
@@ -48,6 +47,18 @@
           />
         </q-td>
       </template>
+      <template v-slot:body-cell-registroVacunas="props">
+        <q-td :props="props">
+          <q-btn
+            dense
+            outline
+            class="q-mr-md"
+            color="green -7"
+            icon="las la-syringe"
+            @click="addVacuna(props['row'])"
+          />
+        </q-td>
+      </template>
       <template v-slot:top-right>
         <q-input
           borderless
@@ -61,6 +72,32 @@
           </template>
         </q-input>
       </template>
+
+      <q-dialog v-model="fixed">
+        <q-card>
+          <q-card-section>
+            <div class="text-h6">Terms of Agreement</div>
+          </q-card-section>
+
+          <q-separator />
+
+          <q-card-section style="max-height: 50vh" class="scroll">
+            <p v-for="n in 15" :key="n">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum
+              repellendus sit voluptate voluptas eveniet porro. Rerum blanditiis
+              perferendis totam, ea at omnis vel numquam exercitationem aut,
+              natus minima, porro labore.
+            </p>
+          </q-card-section>
+
+          <q-separator />
+
+          <q-card-actions align="right">
+            <q-btn flat label="Decline" color="primary" v-close-popup />
+            <q-btn flat label="Accept" color="primary" v-close-popup />
+          </q-card-actions>
+        </q-card>
+      </q-dialog>
     </q-table>
   </div>
   <!-- <q-btn
@@ -81,8 +118,10 @@ export default {
   setup(_, context) {
     const store = useStore();
     const { cows, columns } = useCow();
+
     return {
       filter: ref(""),
+      fixed: ref(false),
       columns,
       cows,
 
@@ -105,6 +144,9 @@ export default {
         store.commit("cowModule/setCow", cow);
         store.commit("cowModule/setEdit", edit);
         store.commit("cowModule/setCowEditing", true);
+      },
+      addVacuna: async (cow, edit) => {
+        fixed = true;
       },
     };
   },
