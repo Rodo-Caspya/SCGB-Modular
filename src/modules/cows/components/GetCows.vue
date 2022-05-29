@@ -72,34 +72,19 @@
           </template>
         </q-input>
       </template>
-
-      <q-dialog v-model="fixed">
-        <q-card>
-          <q-card-section>
-            <div class="text-h6">Terms of Agreement</div>
-          </q-card-section>
-
-          <q-separator />
-
-          <q-card-section style="max-height: 50vh" class="scroll">
-            <p v-for="n in 15" :key="n">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum
-              repellendus sit voluptate voluptas eveniet porro. Rerum blanditiis
-              perferendis totam, ea at omnis vel numquam exercitationem aut,
-              natus minima, porro labore.
-            </p>
-          </q-card-section>
-
-          <q-separator />
-
-          <q-card-actions align="right">
-            <q-btn flat label="Decline" color="primary" v-close-popup />
-            <q-btn flat label="Accept" color="primary" v-close-popup />
-          </q-card-actions>
-        </q-card>
-      </q-dialog>
     </q-table>
   </div>
+  <q-dialog
+    full-width
+    full-height
+    transition-duration="750"
+    persistent
+    transition-show="slide-down"
+    transition-hide="slide-up"
+    v-model="fixed"
+  >
+    <Vaccine @hide="fixed = false" />
+  </q-dialog>
   <!-- <q-btn
     class="q-mr-md"
     color="green-7"
@@ -110,18 +95,22 @@
 
 <script>
 import { ref } from "vue";
+import { defineAsyncComponent } from "vue";
 import { useStore } from "vuex";
 import useCow from "../composables/useCow";
 import Swal from "sweetalert2";
 export default {
   emits: ["tab"],
+  components: {
+    Vaccine: defineAsyncComponent(() => import("./VaccineCows")),
+  },
   setup(_, context) {
     const store = useStore();
     const { cows, columns } = useCow();
-
+    const fixed = ref(false);
     return {
       filter: ref(""),
-      fixed: ref(false),
+      fixed,
       columns,
       cows,
 
@@ -146,7 +135,7 @@ export default {
         store.commit("cowModule/setCowEditing", true);
       },
       addVacuna: async (cow, edit) => {
-        fixed = true;
+        fixed.value = true;
       },
     };
   },
