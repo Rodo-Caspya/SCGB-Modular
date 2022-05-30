@@ -76,19 +76,27 @@
       </q-input>
     </div>
 
-    <q-separator />
-
     <q-card-actions align="right">
-      <q-btn flat label="Decline" color="primary" v-close-popup />
-      <q-btn flat label="Accept" color="primary" v-close-popup />
+      <q-btn flat label="Cancelar" color="primary" v-close-popup />
+      <q-btn flat label="Guardar vacuna" color="primary" v-close-popup />
     </q-card-actions>
+    <q-separator />
   </q-card>
 </template>
 
 <script>
+import { ref } from "vue";
 export default {
   name: "VaccineCows",
   emits: ["hide"],
+  setup() {
+    return {
+      date: ref(null),
+      objectCow: async (cow) => {
+        console.log(cow);
+      },
+    };
+  },
 };
 </script>
 
