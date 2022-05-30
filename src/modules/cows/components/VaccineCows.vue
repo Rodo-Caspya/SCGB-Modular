@@ -3,7 +3,9 @@
     <q-card-section>
       <div class="row">
         <div class="text-h6 col">
-          Registro de vacunas: ID de la vaca numero : {{ cow._id }}
+          Registro de vacunas:
+          <br />
+          Vaca numero : {{ cow._id }}
         </div>
         <q-btn
           @click="$emit('hide')"
@@ -80,7 +82,6 @@
     <q-card-actions align="right">
       <q-btn flat label="Cancelar" color="primary" v-close-popup />
       <q-btn flat label="Guardar vacuna" color="primary" v-close-popup />
-      {{ cow }}
     </q-card-actions>
     <q-separator />
   </q-card>
