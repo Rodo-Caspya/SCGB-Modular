@@ -83,7 +83,7 @@
     transition-hide="slide-up"
     v-model="fixed"
   >
-    <Vaccine @hide="fixed = false" />
+    <Vaccine :cow="objectCow" @hide="fixed = false" />
   </q-dialog>
   <!-- <q-btn
     class="q-mr-md"
@@ -108,11 +108,13 @@ export default {
     const store = useStore();
     const { cows, columns } = useCow();
     const fixed = ref(false);
+    const objectCow = ref(null);
     return {
       filter: ref(""),
       fixed,
       columns,
       cows,
+      objectCow,
 
       deleteCow: async (cow) => {
         const res = Swal.fire({
@@ -128,14 +130,15 @@ export default {
           await store.dispatch("cowModule/getCows");
         }
       },
-      updateCow: async (cow, edit) => {
+      updateCow: (cow, edit) => {
         context.emit("tab");
         store.commit("cowModule/setCow", cow);
         store.commit("cowModule/setEdit", edit);
         store.commit("cowModule/setCowEditing", true);
       },
-      addVacuna: async (cow, edit) => {
+      addVacuna: (cow, edit) => {
         fixed.value = true;
+        objectCow.value = cow;
       },
     };
   },

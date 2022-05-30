@@ -2,7 +2,9 @@
   <q-card>
     <q-card-section>
       <div class="row">
-        <div class="text-h6 col">Registro de vacunas</div>
+        <div class="text-h6 col">
+          Registro de vacunas: ID de la vaca numero : {{ cow._id }}
+        </div>
         <q-btn
           @click="$emit('hide')"
           rounded
@@ -18,12 +20,11 @@
 
     <q-card-section style="max-height: 50vh" class="scroll"> </q-card-section>
     <div class="row justify-around">
-      <q-input
-        autofocus
-        label="Nombre de la vacuna"
-        outlined
-        dense
-        class="col-5 q-pa-sm"
+      <q-select
+        class="col-5"
+        v-model="model"
+        :options="options"
+        label="Nombre de la Vacuna"
       />
       <!-- <q-input
         class="col-5 q-pa-sm"
@@ -79,6 +80,7 @@
     <q-card-actions align="right">
       <q-btn flat label="Cancelar" color="primary" v-close-popup />
       <q-btn flat label="Guardar vacuna" color="primary" v-close-popup />
+      {{ cow }}
     </q-card-actions>
     <q-separator />
   </q-card>
@@ -88,13 +90,18 @@
 import { ref } from "vue";
 export default {
   name: "VaccineCows",
+  props: {
+    cow: {
+      type: Object,
+      required: true,
+    },
+  },
   emits: ["hide"],
-  setup() {
+  setup(props, context) {
     return {
       date: ref(null),
-      objectCow: async (cow) => {
-        console.log(cow);
-      },
+      model: ref(null),
+      options: ["Google", "Facebook", "Twitter", "Apple", "Oracle"],
     };
   },
 };
