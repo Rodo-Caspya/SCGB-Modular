@@ -17,7 +17,7 @@
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
       />
 
-      <q-input
+      <!-- <q-input
         class="col-md-2 col-xs-12 col-sm-5"
         filled
         v-model="vacaForm.type"
@@ -25,8 +25,15 @@
         hint="VACA / VAQUILLA"
         lazy-rules
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+      /> -->
+      <q-select
+        class="col-md-2 col-xs-12 col-sm-5"
+        filled
+        v-model="vacaForm.type"
+        hint="VACA / VAQUILLA"
+        :options="options"
+        label="Tipo de vaca*"
       />
-
       <q-input
         class="col-md-2 col-xs-12 col-sm-5"
         filled
@@ -106,7 +113,7 @@ export default {
     return {
       vacaForm,
       editing,
-
+      options: ["VACA", "VAQUILLA"],
       onSubmit: async () => {
         if (!store.state.cowModule.edit) {
           vacaForm.value.id = vacaForm.value._id;
