@@ -28,31 +28,7 @@
         :options="options"
         label="Nombre de la Vacuna"
       />
-      <!-- <q-input
-        class="col-5 q-pa-sm"
-        outlined
-        dense
-        label="Fecha de vacunación"
-        mask="date"
-        :rules="['date']"
-      >
-        <template v-slot:append>
-          <q-icon name="event" class="cursor-pointer">
-            <q-popup-proxy
-              ref="qDateProxy"
-              cover
-              transition-show="scale"
-              transition-hide="scale"
-            >
-              <q-date today-btn>
-                <div class="row items-center justify-end">
-                  <q-btn v-close-popup label="Close" color="primary" flat />
-                </div>
-              </q-date>
-            </q-popup-proxy>
-          </q-icon>
-        </template>
-      </q-input> -->
+
       <q-input
         filled
         class="col-5"
@@ -84,11 +60,44 @@
       <q-btn flat label="Guardar vacuna" color="primary" v-close-popup />
     </q-card-actions>
     <q-separator />
+
+    <div class="q-pa-md">
+      <q-table
+        :title="`Vacunas aplicadas a la vaca: ${cow._id}`"
+        :rows="rows"
+        :columns="vColumns"
+        row-key="name"
+      >
+        <template v-slot:no-data>
+          <q-icon
+            class="q-ma-sm text-warning"
+            name="las la-exclamation-triangle"
+            size="2em"
+          />
+          <span class="text-subtitle2">Sin datos por mostrar.</span>
+        </template>
+
+        <template v-slot:top-right>
+          <q-input
+            borderless
+            dense
+            debounce="500"
+            v-model="filter"
+            placeholder="Buscar"
+          >
+            <template v-slot:append>
+              <q-icon name="las la-search" />
+            </template>
+          </q-input>
+        </template>
+      </q-table>
+    </div>
   </q-card>
 </template>
 
 <script>
 import { ref } from "vue";
+import useCow from "../composables/useCow";
 export default {
   name: "VaccineCows",
   props: {
@@ -98,10 +107,13 @@ export default {
     },
   },
   emits: ["hide"],
-  setup(props, context) {
+  setup() {
+    const { vColumns } = useCow();
     return {
+      filter: ref(""),
       date: ref(null),
       model: ref(null),
+      vColumns,
       options: ["Google", "Facebook", "Twitter", "Apple", "Oracle"],
     };
   },

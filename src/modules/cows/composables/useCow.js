@@ -50,6 +50,33 @@ const useCow = () => {
         field: "registroVacunas",
       },
     ],
+    vColumns: [
+      {
+        name: "id",
+        align: "left",
+        label: "ID vaca",
+        field: "_id",
+        sortable: true,
+      },
+      {
+        name: "type",
+        label: "Tipo de vaca",
+        field: "type",
+        sortable: true,
+      },
+      {
+        name: "vaccineName",
+        label: "Nombre de la vacuna",
+        field: "vName",
+        sortable: true,
+      },
+      {
+        name: "date",
+        label: "Fecha de aplicacion",
+        field: "date",
+        sortable: true,
+      },
+    ],
 
     // authStatus: computed(() => store.getters["authModule/currentState"]),
     // username: computed(() => store.getters["authModule/username"]),
