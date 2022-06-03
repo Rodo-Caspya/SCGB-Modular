@@ -98,6 +98,7 @@ import { ref } from "vue";
 import { defineAsyncComponent } from "vue";
 import { useStore } from "vuex";
 import useCow from "../composables/useCow";
+import useVaccine from "../composables/useVaccine";
 import Swal from "sweetalert2";
 export default {
   emits: ["tab"],
@@ -107,6 +108,7 @@ export default {
   setup(_, context) {
     const store = useStore();
     const { cows, columns } = useCow();
+    const { getVaccinesById } = useVaccine();
     const fixed = ref(false);
     const objectCow = ref(null);
     return {
@@ -136,9 +138,11 @@ export default {
         store.commit("cowModule/setEdit", edit);
         store.commit("cowModule/setCowEditing", true);
       },
-      addVacuna: (cow, edit) => {
+      addVacuna: async (cow, edit) => {
         fixed.value = true;
         objectCow.value = cow;
+
+        await getVaccinesById(cow._id);
       },
     };
   },

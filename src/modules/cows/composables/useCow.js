@@ -22,7 +22,6 @@ const useCow = () => {
   });
 
   return {
-    vaccines: computed(() => store.state.cowModule.vaccines),
     cows: computed(() => store.state.cowModule.cows),
     editCow: computed(() => store.state.cowModule.editCow),
     editing: computed(() => store.state.cowModule.edit),

@@ -25,7 +25,7 @@
       <q-select
         class="col-5"
         v-model="model"
-        :options="options"
+        :options="vaccines"
         label="Nombre de la Vacuna"
       />
 
@@ -116,13 +116,15 @@ export default {
   },
   emits: ["hide"],
   setup() {
-    const { vColumns, getVaccines } = useVaccine();
+    const { vColumns, getVaccines, vaccines } = useVaccine();
     return {
       filter: ref(""),
       date: ref(null),
       model: ref(null),
       vColumns,
       getVaccines,
+
+      vaccines,
       options: ["Google", "Facebook", "Twitter", "Apple", "Oracle"],
     };
   },

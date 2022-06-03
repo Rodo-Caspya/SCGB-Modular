@@ -6,9 +6,17 @@ const useVaccine = () => {
   const getVaccines = async () => {
     await store.dispatch("cowModule/getVaccines");
   };
+  const getVaccinesById = async (id) => {
+    await store.dispatch("cowModule/getVaccinesById", id);
+  };
+  onBeforeMount(async () => {
+    await getVaccines();
+  });
 
   return {
     getVaccines,
+    getVaccinesById,
+    vaccines: computed(() => store.state.cowModule.vaccines),
     vColumns: [
       {
         name: "id",
@@ -18,21 +26,27 @@ const useVaccine = () => {
         sortable: true,
       },
       {
-        name: "type",
-        label: "Tipo de vaca",
-        field: "type",
+        name: "vaccineName",
+        label: "Nombre de la vacuna",
+        field: "name",
         sortable: true,
       },
       {
-        name: "vaccineName",
-        label: "Nombre de la vacuna",
-        field: "vName",
+        name: "vaccineDescription",
+        label: "Descripcion de la vacuna",
+        field: "description",
         sortable: true,
       },
       {
         name: "date",
         label: "Fecha de aplicacion",
-        field: "date",
+        field: "registrationDate",
+        sortable: true,
+      },
+      {
+        name: "dateE",
+        label: "Fecha de vencimiento",
+        field: "expirationDate",
         sortable: true,
       },
     ],
