@@ -169,11 +169,9 @@ export default {
       filter: ref(""),
       model,
       vColumns,
-      getVaccines,
-
       vaccines,
       vaccinesById,
-      options: ["Google", "Facebook", "Twitter", "Apple", "Oracle"],
+      getVaccines,
       addVacuna: async () => {
         // console.log(props.cow._id, model.value);
         await addVaccineById(props.cow._id, model.value);
