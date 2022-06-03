@@ -92,16 +92,18 @@ export const getVaccines = async ({ commit }) => {
 };
 export const getVaccinesById = async ({ commit }, id) => {
   // const vaccines = [];
+  console.log("hola este es el id", id);
   try {
-    const { data } = await cowsApi.get("/vacunas", id);
+    const { data } = await cowsApi.get(`/getVacunas/${id}`);
 
+    commit("setVaccinesById", data);
     // for (var i in data) {
     //   console.log(data[i].name);
     //   vaccines.push(data[i].name);
     // }
     // console.log(vaccines);
     // commit("setVaccines", vaccines);
-    console.log(data);
+    // console.log("estas son", data);
   } catch (e) {
     console.log(e);
     console.log("cayo aqui");

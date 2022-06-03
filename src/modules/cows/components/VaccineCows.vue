@@ -23,18 +23,58 @@
     <q-card-section style="max-height: 50vh" class="scroll"> </q-card-section>
     <div class="row justify-around">
       <q-select
-        class="col-5"
+        class="col-5 q-mb-md"
         v-model="model"
         :options="vaccines"
         label="Nombre de la Vacuna"
       />
-
+      <q-input
+        class="col-5"
+        v-model="description"
+        filled
+        type="text"
+        label="Descripción de la Vacuna"
+      />
       <q-input
         filled
         class="col-5"
         v-model="date"
         mask="date"
         :rules="['date']"
+        label="Fecha de aplicación"
+      >
+        <q-btn
+          @click="getVaccines"
+          rounded
+          dense
+          flat
+          icon="las la-times"
+          size="md"
+        />
+        <template v-slot:append>
+          <q-icon name="event" class="cursor-pointer">
+            <q-popup-proxy
+              ref="qDateProxy"
+              cover
+              transition-show="scale"
+              transition-hide="scale"
+            >
+              <q-date v-model="date">
+                <div class="row items-center justify-end">
+                  <q-btn v-close-popup label="Close" color="primary" flat />
+                </div>
+              </q-date>
+            </q-popup-proxy>
+          </q-icon>
+        </template>
+      </q-input>
+      <q-input
+        filled
+        class="col-5"
+        v-model="dateE"
+        mask="date"
+        :rules="['date']"
+        label="Fecha de vencimiento"
       >
         <q-btn
           @click="getVaccines"
@@ -65,16 +105,22 @@
 
     <q-card-actions align="right">
       <q-btn flat label="Cancelar" color="primary" v-close-popup />
-      <q-btn flat label="Guardar vacuna" color="primary" v-close-popup />
+      <q-btn
+        @click="addVacuna"
+        flat
+        label="Guardar vacuna"
+        color="primary"
+        v-close-popup
+      />
     </q-card-actions>
     <q-separator />
 
     <div class="q-pa-md">
       <q-table
         :title="`Vacunas aplicadas a la vaca: ${cow._id}`"
-        :rows="rows"
+        :rows="vaccinesById"
         :columns="vColumns"
-        row-key="name"
+        :row-key="vaccinesById['_id']"
       >
         <template v-slot:no-data>
           <q-icon
@@ -115,17 +161,23 @@ export default {
     },
   },
   emits: ["hide"],
-  setup() {
-    const { vColumns, getVaccines, vaccines } = useVaccine();
+  setup(props) {
+    const { vColumns, getVaccines, vaccines, vaccinesById } = useVaccine();
     return {
       filter: ref(""),
       date: ref(null),
+      dateE: ref(null),
+      description: ref(null),
       model: ref(null),
       vColumns,
       getVaccines,
 
       vaccines,
+      vaccinesById,
       options: ["Google", "Facebook", "Twitter", "Apple", "Oracle"],
+      addVacuna: async (cow, edit) => {
+        console.log("hi, mi name is", props.cow._id);
+      },
     };
   },
 };

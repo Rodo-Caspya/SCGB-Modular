@@ -5,7 +5,7 @@ import isAuthenticatedGuard from "../modules/auth/router/auth-gard";
 import isAuthenticated from "../modules/auth/router/authenticated-gard";
 import isAdmin from "../modules/auth/router/users-gard";
 import { Store } from "../store";
-console.log(Store.state.authModule.edit);
+
 // import cowRouter from "../modules/cow/router";
 // import users from "../modules/users/router";
 const routes = [
