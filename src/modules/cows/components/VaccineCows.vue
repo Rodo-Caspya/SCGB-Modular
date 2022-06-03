@@ -23,22 +23,22 @@
     <q-card-section style="max-height: 50vh" class="scroll"> </q-card-section>
     <div class="row justify-around">
       <q-select
-        class="col-5 q-mb-md"
-        v-model="model"
+        class="col-md-5 col-xs-11 col-sm-5 q-mb-md"
+        v-model="model.name"
         :options="vaccines"
         label="Nombre de la Vacuna"
       />
       <q-input
-        class="col-5"
-        v-model="description"
+        class="col-md-5 col-xs-11 col-sm-5 q-mb-md"
+        v-model="model.description"
         filled
         type="text"
         label="Descripción de la Vacuna"
       />
       <q-input
         filled
-        class="col-5"
-        v-model="date"
+        class="col-md-5 col-xs-11 col-sm-5"
+        v-model="model.registrationDate"
         mask="date"
         :rules="['date']"
         label="Fecha de aplicación"
@@ -59,7 +59,7 @@
               transition-show="scale"
               transition-hide="scale"
             >
-              <q-date v-model="date">
+              <q-date v-model="model.registrationDate">
                 <div class="row items-center justify-end">
                   <q-btn v-close-popup label="Close" color="primary" flat />
                 </div>
@@ -70,8 +70,8 @@
       </q-input>
       <q-input
         filled
-        class="col-5"
-        v-model="dateE"
+        class="col-md-5 col-xs-11 col-sm-5"
+        v-model="model.expirationDate"
         mask="date"
         :rules="['date']"
         label="Fecha de vencimiento"
@@ -92,7 +92,7 @@
               transition-show="scale"
               transition-hide="scale"
             >
-              <q-date v-model="date">
+              <q-date v-model="model.expirationDate">
                 <div class="row items-center justify-end">
                   <q-btn v-close-popup label="Close" color="primary" flat />
                 </div>
@@ -162,21 +162,21 @@ export default {
   },
   emits: ["hide"],
   setup(props) {
-    const { vColumns, getVaccines, vaccines, vaccinesById } = useVaccine();
+    const { vColumns, getVaccines, vaccines, vaccinesById, addVaccineById } =
+      useVaccine();
+    let model = ref({});
     return {
       filter: ref(""),
-      date: ref(null),
-      dateE: ref(null),
-      description: ref(null),
-      model: ref(null),
+      model,
       vColumns,
       getVaccines,
 
       vaccines,
       vaccinesById,
       options: ["Google", "Facebook", "Twitter", "Apple", "Oracle"],
-      addVacuna: async (cow, edit) => {
-        console.log("hi, mi name is", props.cow._id);
+      addVacuna: async () => {
+        // console.log(props.cow._id, model.value);
+        await addVaccineById(props.cow._id, model.value);
       },
     };
   },

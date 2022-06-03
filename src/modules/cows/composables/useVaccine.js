@@ -9,12 +9,17 @@ const useVaccine = () => {
   const getVaccinesById = async (id) => {
     await store.dispatch("cowModule/getVaccinesById", id);
   };
-  // onBeforeMount(async () => {
-  //   await getVaccines();
-  // });
+  const addVaccineById = async (id, model) => {
+    console.log("este es el model", model);
+    await store.dispatch("cowModule/addVaccineById", { id, model });
+  };
+  //   onBeforeMount(async () => {
+  //     await getVaccines();
+  //   });
   return {
     getVaccines,
     getVaccinesById,
+    addVaccineById,
     vaccines: computed(() => store.state.cowModule.vaccines),
     vaccinesById: computed(() => store.state.cowModule.vaccinesById),
     vColumns: [
