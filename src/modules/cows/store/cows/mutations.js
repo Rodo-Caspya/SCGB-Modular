@@ -14,7 +14,10 @@ export const setCowEditing = (state, val) => {
 export function setCow(state, cow) {
   state.cowSelected = cow;
 }
-
+// apartado vacunas
+export const setVaccines = (state, vaccines) => {
+  state.vaccines = vaccines;
+};
 export function clearCows(state) {
   state.cows = [];
   state.cowSelected = {};

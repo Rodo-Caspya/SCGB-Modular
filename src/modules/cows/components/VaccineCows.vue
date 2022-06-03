@@ -36,6 +36,14 @@
         mask="date"
         :rules="['date']"
       >
+        <q-btn
+          @click="getVaccines"
+          rounded
+          dense
+          flat
+          icon="las la-times"
+          size="md"
+        />
         <template v-slot:append>
           <q-icon name="event" class="cursor-pointer">
             <q-popup-proxy
@@ -97,7 +105,7 @@
 
 <script>
 import { ref } from "vue";
-import useCow from "../composables/useCow";
+import useVaccine from "../composables/useVaccine";
 export default {
   name: "VaccineCows",
   props: {
@@ -108,12 +116,13 @@ export default {
   },
   emits: ["hide"],
   setup() {
-    const { vColumns } = useCow();
+    const { vColumns, getVaccines } = useVaccine();
     return {
       filter: ref(""),
       date: ref(null),
       model: ref(null),
       vColumns,
+      getVaccines,
       options: ["Google", "Facebook", "Twitter", "Apple", "Oracle"],
     };
   },

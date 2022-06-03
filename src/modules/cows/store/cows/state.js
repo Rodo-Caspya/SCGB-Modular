@@ -7,5 +7,8 @@ export default function () {
     cowSelected: {},
     editCow: "Agregar vaca",
     edit: false,
+    // apartado vacunas
+    vaccines: [],
+    vaccinesById: [],
   };
 }

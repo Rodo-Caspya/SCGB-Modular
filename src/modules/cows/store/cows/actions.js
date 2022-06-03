@@ -3,6 +3,7 @@
 // }
 
 import cowsApi from "../../../../api/cowsApi";
+import vacinnesApi from "../../../../api/vaccinesApi";
 
 export const registerCow = async ({ commit }, cow) => {
   try {
@@ -50,3 +51,42 @@ export async function deleteCow(_, cow) {
     console.log("Error al eliminar vaca", e);
   }
 }
+
+// Ingresar vacunas
+export const addVaccine = async ({ commit }, vaccine) => {
+  try {
+    const { data } = await cowsApi.post("/newVacuna", vaccine); //se manda el body como parametros
+
+    // if (data.success == true) {
+    //   return { ok: true };
+    // } else {
+    //   return {
+    //     ok: false,
+    //     message:
+    //       data.code == 11000 ? `"El id ${cow.id} ya esta registrado"` : "",
+    //   };
+    // }
+    console.log("data es:", data);
+  } catch (error) {
+    return { ok: false, message: data.message };
+  }
+};
+export const getVaccines = async ({ commit }) => {
+  const vaccines = [];
+  try {
+    const { data } = await vacinnesApi.get("/vacunas");
+
+    for (var i in data) {
+      console.log(data[i].name);
+      vaccines.push([data[i].name]);
+    }
+    console.log(vaccines);
+    // commit("setVaccines", data);
+  } catch (e) {
+    console.log(e);
+    console.log("Error al obtener las vacas: ");
+    // } finally {
+    //   commit("setLoading");
+    // }
+  }
+};
