@@ -16,16 +16,6 @@
         lazy-rules
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
       />
-
-      <!-- <q-input
-        class="col-md-2 col-xs-12 col-sm-5"
-        filled
-        v-model="vacaForm.type"
-        label="Tipo de vaca *"
-        hint="VACA / VAQUILLA"
-        lazy-rules
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-      /> -->
       <q-select
         class="col-md-2 col-xs-12 col-sm-5"
         filled
@@ -37,7 +27,7 @@
       <q-input
         class="col-md-2 col-xs-12 col-sm-5"
         filled
-        type="Edad"
+        type="Number"
         v-model="vacaForm.age"
         label="Edad de la vaca *"
         hint="Ingrese la edad de la vaca"

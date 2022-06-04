@@ -28,8 +28,10 @@ export const signInUser = async ({ commit }, user) => {
         ok: false,
         message:
           data.err.name == "IncorrectUsernameError"
-            ? "Usuario incorrecto"
-            : "Contraseña incorrecta",
+            ? // ? "Usuario incorrecto"
+              //: "Contraseña incorrecta",
+              "Usuario o contraseña incorrecto"
+            : "Usuario o contraseña incorrecto",
       };
     }
   } catch (error) {
