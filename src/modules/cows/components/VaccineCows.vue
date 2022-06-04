@@ -2,11 +2,7 @@
   <q-card>
     <q-card-section>
       <div class="row">
-        <div class="text-h6 col">
-          Registro de vacunas:
-          <br />
-          Vaca numero : {{ cow._id }}
-        </div>
+        <div class="text-h6 col">Registro de vacunas:</div>
         <q-btn
           @click="$emit('hide')"
           rounded
@@ -37,20 +33,13 @@
       />
       <q-input
         filled
+        readonly
         class="col-md-5 col-xs-11 col-sm-5"
         v-model="model.registrationDate"
         mask="date"
         :rules="['date']"
         label="Fecha de aplicación"
       >
-        <q-btn
-          @click="getVaccines"
-          rounded
-          dense
-          flat
-          icon="las la-times"
-          size="md"
-        />
         <template v-slot:append>
           <q-icon name="event" class="cursor-pointer">
             <q-popup-proxy
@@ -70,20 +59,13 @@
       </q-input>
       <q-input
         filled
+        readonly
         class="col-md-5 col-xs-11 col-sm-5"
         v-model="model.expirationDate"
         mask="date"
         :rules="['date']"
         label="Fecha de vencimiento"
       >
-        <q-btn
-          @click="getVaccines"
-          rounded
-          dense
-          flat
-          icon="las la-times"
-          size="md"
-        />
         <template v-slot:append>
           <q-icon name="event" class="cursor-pointer">
             <q-popup-proxy
@@ -105,18 +87,13 @@
 
     <q-card-actions align="right">
       <q-btn flat label="Cancelar" color="primary" v-close-popup />
-      <q-btn
-        @click="addVacuna"
-        flat
-        label="Guardar vacuna"
-        color="primary"
-        v-close-popup
-      />
+      <q-btn color="primary" @click="addVacuna" flat label="Guardar vacuna" />
     </q-card-actions>
     <q-separator />
 
     <div class="q-pa-md">
       <q-table
+        class="bg-blue-grey-1"
         :title="`Vacunas aplicadas a la vaca: ${cow._id}`"
         :rows="vaccinesById"
         :columns="vColumns"
@@ -151,7 +128,10 @@
 
 <script>
 import { ref } from "vue";
+import { useStore } from "vuex";
+
 import useVaccine from "../composables/useVaccine";
+
 export default {
   name: "VaccineCows",
   props: {
@@ -162,6 +142,7 @@ export default {
   },
   emits: ["hide"],
   setup(props) {
+    const store = useStore();
     const { vColumns, getVaccines, vaccines, vaccinesById, addVaccineById } =
       useVaccine();
     let model = ref({});
@@ -172,9 +153,12 @@ export default {
       vaccines,
       vaccinesById,
       getVaccines,
+
       addVacuna: async () => {
+        console.log("hi");
         // console.log(props.cow._id, model.value);
         await addVaccineById(props.cow._id, model.value);
+        await store.dispatch("cowModule/getVaccinesById", props.cow._id);
       },
     };
   },

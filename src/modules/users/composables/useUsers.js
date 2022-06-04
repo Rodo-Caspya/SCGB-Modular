@@ -11,8 +11,8 @@ const useUser = () => {
   const getUsers = async () => {
     await store.dispatch("usersModule/getUsers");
   };
-  const updateUser = async (user) => {
-    const resp = await store.dispatch("usersModule/updateUser", user);
+  const updateUser = async (id, user) => {
+    const resp = await store.dispatch("usersModule/updateUser", { id, user });
 
     return resp;
   };

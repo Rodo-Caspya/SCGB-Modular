@@ -13,7 +13,7 @@
           class="col-xs-3 col-sm-6 col-md-5 col-md-6"
         />
         <q-tab
-          label="Agregar Usuario"
+          :label="editUser"
           name="two"
           class="col-xs-3 col-sm-6 col-md-5 col-md-6"
         />
@@ -34,6 +34,7 @@
 
 <script>
 import { ref, defineAsyncComponent } from "vue";
+import useUser from '../composables/useUsers';
 export default {
   name: "UsersView",
   components: {
@@ -43,8 +44,10 @@ export default {
     ),
   },
   setup() {
-    return {
+    const {editUser} = useUser();
+     return {
       tab: ref("one"),
+      editUser
     };
   },
 };

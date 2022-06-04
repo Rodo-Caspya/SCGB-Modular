@@ -1,5 +1,5 @@
 <template>
-  <div class="q-pa-md ">
+  <div class="q-pa-md">
     <q-form
       @submit="onSubmit"
       @reset="onReset"
@@ -41,10 +41,10 @@
         label="Correo electronico *"
         hint="Ingresa tu correo"
         lazy-rules
-          :rules="[
-            (val) => (val && val.length > 0) || 'Este campo es obligatorio',
-            isValidEmail,
-          ]"
+        :rules="[
+          (val) => (val && val.length > 0) || 'Este campo es obligatorio',
+          isValidEmail,
+        ]"
       />
       <q-input
         class="col-md-2 col-xs-12 col-sm-5"
@@ -60,14 +60,20 @@
       />
 
       <div class="col-md-2 col-xs-12 col-sm-5">
-        <q-toggle size="4rem"  v-model="userForm.admin" label="Permisos de administrador" color="green" checked-icon="las la-pencil-alt" unchecked-icon="las la-times"/>
-        <br>
-        <strong class="q-ml-lg">{{ (userForm.admin?"CON PERMISOS":"SIN PERMISOS") }}</strong>
+        <q-toggle
+          size="4rem"
+          v-model="userForm.admin"
+          label="Permisos de administrador"
+          color="green"
+          checked-icon="las la-pencil-alt"
+          unchecked-icon="las la-times"
+        />
+        <br />
+        <strong class="q-ml-lg">{{
+          userForm.admin ? "CON PERMISOS" : "SIN PERMISOS"
+        }}</strong>
         <!-- <q-toggle toggle-order="ft" indeterminate-value="false" v-model="userForm.admin" label="HACER ADMIN" /> -->
       </div>
-
-
-
 
       <div>
         <q-btn label="Guardar" type="submit" color="green-7" />
@@ -97,8 +103,7 @@ export default {
     const $q = useQuasar();
 
     let userForm = ref({
-      admin: false
-
+      admin: false,
     });
 
     const { createUser, updateUser, editing } = useUser();
@@ -128,7 +133,11 @@ export default {
             Swal.fire("Registro exitoso", message, "success");
           }
         } else {
-          const { ok, message } = await updateUser(userForm.value);
+          let id = null;
+          id = userForm.value._id;
+          delete userForm.value._id;
+
+          const { ok, message } = await updateUser(id, userForm.value);
           if (!ok) Swal.fire("Error", message, "error");
           else {
             context.emit("tab");
@@ -153,7 +162,6 @@ export default {
           /^(?=[a-zA-Z0-9@._%+-]{6,254}$)[a-zA-Z0-9._%+-]{1,64}@(?:[a-zA-Z0-9-]{1,63}\.){1,8}[a-zA-Z]{2,63}$/;
         return emailPattern.test(val) || "El correo no parece ser válido";
       },
-
     };
   },
 };

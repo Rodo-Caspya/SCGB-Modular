@@ -6,7 +6,7 @@ import usersApi from "../../../../api/usersApi";
 export const registerUser = async ({ commit }, user) => {
   try {
     const { data } = await usersApi.post("/signup", user); //se manda el body como parametros
-    console.log(data);
+
     if (data.success == true) {
       return { ok: true };
     } else {
@@ -24,7 +24,7 @@ export const registerUser = async ({ commit }, user) => {
 export const getUsers = async ({ commit }) => {
   try {
     const { data } = await usersApi.get("/consultar");
-    console.log(data);
+
     commit("setUsers", data);
   } catch (e) {
     console.log("Error al obtener los usuarios: ");
@@ -33,9 +33,9 @@ export const getUsers = async ({ commit }) => {
     // }
   }
 };
-export async function updateUser(_, user) {
+export async function updateUser(_, { id, user }) {
   try {
-    await usersApi.put(`/update/${users._id}`, user);
+    await usersApi.put(`/update/${id}`, user);
     return { ok: true };
   } catch (e) {
     console.log("Error al editar usuario", e);
@@ -49,5 +49,3 @@ export async function deleteUser(_, user) {
     console.log("Error al eliminar usuario", e);
   }
 }
-
-

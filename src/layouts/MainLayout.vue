@@ -60,12 +60,12 @@ const linksList = [
     icon: "las la-hat-cowboy",
     link: "#/cows",
   },
-  {
-    title: "Extra",
-    caption: "Extras",
-    icon: "las la-plus",
-    link: "https://chat.quasar.dev",
-  },
+  // {
+  //   title: "Extra",
+  //   caption: "Extras",
+  //   icon: "las la-plus",
+  //   link: "https://chat.quasar.dev",
+  // },
   // {
   //   title: "Forum",
   //   caption: "forum.quasar.dev",

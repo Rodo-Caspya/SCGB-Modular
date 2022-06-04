@@ -138,7 +138,7 @@ export default {
         store.commit("cowModule/setEdit", edit);
         store.commit("cowModule/setCowEditing", true);
       },
-      addVacuna: async (cow, edit) => {
+      addVacuna: async (cow) => {
         fixed.value = true;
         objectCow.value = cow;
 

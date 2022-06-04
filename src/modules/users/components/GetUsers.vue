@@ -36,7 +36,7 @@
             class="q-mr-md"
             color="green-7"
             icon="las la-edit"
-            @click="updateUser(props['row'], 'Editar vaca')"
+            @click="updateUser(props['row'], 'Editar usuario')"
           />
           <q-btn
             dense

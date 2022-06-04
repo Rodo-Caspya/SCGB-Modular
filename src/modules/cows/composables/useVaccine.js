@@ -1,24 +1,18 @@
 import { useStore } from "vuex";
-import { computed, onBeforeMount } from "vue";
+import { computed, onBeforeMount, Mounted } from "vue";
 
 const useVaccine = () => {
   const store = useStore();
   const getVaccines = async () => {
     await store.dispatch("cowModule/getVaccines");
   };
-  const getVaccinesById = async (id) => {
-    await store.dispatch("cowModule/getVaccinesById", id);
-  };
+
   const addVaccineById = async (id, model) => {
-    console.log("este es el model", model);
     await store.dispatch("cowModule/addVaccineById", { id, model });
   };
-  //   onBeforeMount(async () => {
-  //     await getVaccines();
-  //   });
+
   return {
     getVaccines,
-    getVaccinesById,
     addVaccineById,
     vaccines: computed(() => store.state.cowModule.vaccines),
     vaccinesById: computed(() => store.state.cowModule.vaccinesById),
