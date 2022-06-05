@@ -162,9 +162,8 @@ export default {
       getVaccinesById,
 
       addVacuna: async () => {
-        console.log("hi");
-        // console.log(props.cow._id, model.value);
         await addVaccineById(props.cow._id, model.value);
+        await store.dispatch("cowModule/getVaccinesById", props.cow._id);
       },
     };
   },
