@@ -20,6 +20,7 @@ export const setVaccines = (state, vaccines) => {
 };
 export const setVaccinesById = (state, vaccines) => {
   state.vaccinesById = vaccines;
+  console.log(state.vaccinesById);
 };
 export function clearCows(state) {
   state.cows = [];

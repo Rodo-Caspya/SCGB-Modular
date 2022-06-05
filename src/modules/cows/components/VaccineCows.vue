@@ -162,8 +162,12 @@ export default {
       getVaccinesById,
 
       addVacuna: async () => {
+        // vacaForm.value = store.getters["cowModule/getCowSelected"];
+        console.log("props.cow._id,:", props.cow._id);
+        console.log("model.value", model.value);
         await addVaccineById(props.cow._id, model.value);
-        await store.dispatch("cowModule/getVaccinesById", props.cow._id);
+        await store.dispatch("cowModule/getVaccinesById", props.cow._id); //obtiene todas en la base de datos
+        await store.getters["cowModule/getVaccinesById"];
       },
     };
   },

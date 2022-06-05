@@ -56,7 +56,6 @@ export async function deleteCow(_, cow) {
 export const addVaccine = async ({ commit }, vaccine) => {
   try {
     const { data } = await cowsApi.post("/newVacuna", vaccine); //se manda el body como parametros
-
     // if (data.success == true) {
     //   return { ok: true };
     // } else {
@@ -80,7 +79,6 @@ export const getVaccines = async ({ commit }) => {
       // console.log(data[i].name);
       vaccines.push(data[i].name);
     }
-    console.log(vaccines);
     commit("setVaccines", vaccines);
   } catch (e) {
     console.log(e);
@@ -91,10 +89,11 @@ export const getVaccines = async ({ commit }) => {
   }
 };
 export const getVaccinesById = async ({ commit }, id) => {
+  console.log("d", id);
   try {
     const { data } = await cowsApi.get(`/getVacunas/${id}`);
-
-    await commit("setVaccinesById", data);
+    commit("setVaccinesById", data);
+    console.log("data", data);
   } catch (e) {
     console.log(e);
     console.log("Error al obtener las vacas: ");
