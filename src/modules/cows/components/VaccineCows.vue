@@ -143,8 +143,14 @@ export default {
   emits: ["hide"],
   setup(props) {
     const store = useStore();
-    const { vColumns, getVaccines, vaccines, vaccinesById, addVaccineById } =
-      useVaccine();
+    const {
+      vColumns,
+      getVaccines,
+      getVaccinesById,
+      vaccines,
+      vaccinesById,
+      addVaccineById,
+    } = useVaccine();
     let model = ref({});
     return {
       filter: ref(""),
@@ -153,12 +159,12 @@ export default {
       vaccines,
       vaccinesById,
       getVaccines,
+      getVaccinesById,
 
       addVacuna: async () => {
         console.log("hi");
         // console.log(props.cow._id, model.value);
         await addVaccineById(props.cow._id, model.value);
-        await store.dispatch("cowModule/getVaccinesById", props.cow._id);
       },
     };
   },

@@ -141,8 +141,7 @@ export default {
       addVacuna: async (cow) => {
         fixed.value = true;
         objectCow.value = cow;
-
-        await getVaccinesById(cow._id);
+        await getVaccinesById(objectCow.value._id);
       },
     };
   },
