@@ -56,6 +56,7 @@ export async function deleteCow(_, cow) {
 export const addVaccine = async ({ commit }, vaccine) => {
   try {
     const { data } = await cowsApi.post("/newVacuna", vaccine); //se manda el body como parametros
+
     // if (data.success == true) {
     //   return { ok: true };
     // } else {
@@ -65,7 +66,6 @@ export const addVaccine = async ({ commit }, vaccine) => {
     //       data.code == 11000 ? `"El id ${cow.id} ya esta registrado"` : "",
     //   };
     // }
-    console.log("data es:", data);
   } catch (error) {
     return { ok: false, message: data.message };
   }
@@ -89,7 +89,6 @@ export const getVaccines = async ({ commit }) => {
   }
 };
 export const getVaccinesById = async ({ commit }, id) => {
-  console.log("d", id);
   try {
     const { data } = await cowsApi.get(`/getVacunas/${id}`);
     commit("setVaccinesById", data);
@@ -100,11 +99,9 @@ export const getVaccinesById = async ({ commit }, id) => {
   }
 };
 export const addVaccineById = async ({ commit }, { id, model }) => {
-  console.log("model en action", model);
   try {
     const { data } = await cowsApi.post(`/addVacuna/${id}`, model);
-
-    console.log(data);
+    console.log("data eees", data);
     // for (var i in data) {
     //   console.log(data[i].name);
     //   vaccines.push(data[i].name);
