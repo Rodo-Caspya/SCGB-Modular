@@ -88,6 +88,7 @@
     <q-card-actions align="right">
       <q-btn flat label="Cancelar" color="primary" v-close-popup />
       <q-btn color="primary" @click="addVacuna" flat label="Guardar vacuna" />
+      <q-btn color="primary" @click="refresh" flat label="refresh" />
     </q-card-actions>
     <q-separator />
 
@@ -143,6 +144,7 @@ export default {
   emits: ["hide"],
   setup(props) {
     const store = useStore();
+
     const {
       vColumns,
       getVaccines,
@@ -164,7 +166,18 @@ export default {
       addVacuna: async () => {
         // vacaForm.value = store.getters["cowModule/getCowSelected"];
         //abajo quite el await y funciono
-        addVaccineById(props.cow._id, model.value);
+
+        await addVaccineById(props.cow._id, model.value);
+
+        // await store.dispatch("cowModule/getVaccinesById", props.cow._id); //obtiene todas en la base de datos
+      },
+      clga: () => {
+        console.log("object");
+      },
+      refresh: async () => {
+        // vacaForm.value = store.getters["cowModule/getCowSelected"];
+        //abajo quite el await y funciono
+
         getVaccinesById(props.cow._id);
 
         // await store.dispatch("cowModule/getVaccinesById", props.cow._id); //obtiene todas en la base de datos
