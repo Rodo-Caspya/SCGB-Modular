@@ -1,5 +1,5 @@
 <template>
-  <template v-if="!isAdmin && title != 'Usuarios'">
+  <template v-if="!isAdmin && title != 'Usuarios' && title != 'Vacunas'">
     <q-item clickable tag="a" :href="link">
       <q-item-section v-if="icon" avatar>
         <q-icon :name="icon" />
