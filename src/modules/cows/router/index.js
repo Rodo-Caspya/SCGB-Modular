@@ -13,5 +13,11 @@ export default {
       component: () =>
         import(/* webpackChunkName: "Login" */ "../views/CowView.vue"),
     },
+    {
+      path: "/vaccines-cows",
+      name: "vaccines-cows",
+      component: () =>
+        import(/* webpackChunkName: "Login" */ "../views/VaccinesView.vue"),
+    },
   ],
 };

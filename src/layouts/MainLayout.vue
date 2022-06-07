@@ -64,7 +64,7 @@ const linksList = [
     title: "Vacunas",
     caption: "Agregar vacunas",
     icon: "las la-plus",
-    link: "https://chat.quasar.dev",
+    link: "#/vaccines-cows",
   },
   // {
   //   title: "Forum",
