@@ -101,8 +101,8 @@ export default {
           cancelButtonText: "Cancelar",
         });
         if ((await res).isConfirmed) {
-          await store.dispatch("cowModule/deleteCow", cow);
-          await store.dispatch("cowModule/getCows");
+          await store.dispatch("cowModule/deleteVaccine", cow);
+          await store.dispatch("cowModule/getVaccinesRows");
         }
       },
       updateCow: (cow, edit) => {

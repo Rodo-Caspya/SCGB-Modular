@@ -5,7 +5,7 @@
       @reset="onReset"
       class="q-gutter-y-md q-gutter-x-xs row items-start justify-between"
     >
-      <q-input
+      <!-- <q-input
         :disable="editingV"
         class="col-md-2 col-xs-12 col-sm-5"
         filled
@@ -15,7 +15,7 @@
         hint="Identificación de la vaca"
         lazy-rules
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-      />
+      /> -->
       <q-input
         class="col-md-2 col-xs-12 col-sm-5"
         filled
@@ -58,6 +58,7 @@ import { useStore } from "vuex";
 import useCow from "../composables/useCow";
 import useVaccine from "../composables/useVaccine";
 import Swal from "sweetalert2";
+import { updateVaccine } from "../store/cows/actions";
 export default {
   emits: ["tab"],
   setup(_, context) {
@@ -66,8 +67,8 @@ export default {
 
     let vacaForm = ref({});
 
-    const { createCow, updateCow } = useCow();
-    const { editingV } = useVaccine();
+    const { updateCow } = useCow();
+    const { editingV, createVaccine, updateVaccine } = useVaccine();
     onMounted(() => {
       if (editingV) {
         vacaForm.value = store.getters["cowModule/getVaccineSelected"];
@@ -84,24 +85,30 @@ export default {
     return {
       vacaForm,
       editingV,
+      createVaccine,
       options: ["VACA", "VAQUILLA"],
       onSubmit: async () => {
-        if (!store.state.cowModule.edit) {
-          vacaForm.value.id = vacaForm.value._id;
-          const { ok, message } = await createCow(vacaForm.value);
-          if (!ok) Swal.fire("Error", message, "error");
-          else {
-            context.emit("tab");
-            Swal.fire("Registro exitoso", message, "success");
-          }
+        if (!store.state.cowModule.editV) {
+          // vacaForm.value.id = vacaForm.value._id;
+          console.log(vacaForm.value);
+          // const { ok, message } = await createVaccine(vacaForm.value);
+          await createVaccine(vacaForm.value);
+          context.emit("tab");
+          // if (!ok) Swal.fire("Error", message, "error");
+          // else {
+          //   context.emit("tab");
+          //   Swal.fire("Registro exitoso", message, "success");
+          // }
         } else {
-          const { ok, message } = await updateCow(vacaForm.value);
-          if (!ok) Swal.fire("Error", message, "error");
-          else {
-            context.emit("tab");
+          // const { ok, message } = await updateCow(vacaForm.value);
+          await updateVaccine(vacaForm.value);
+          context.emit("tab");
+          // if (!ok) Swal.fire("Error", message, "error");
+          // else {
+          //   context.emit("tab");
 
-            Swal.fire("Registro actualizado", message, "success");
-          }
+          //   Swal.fire("Registro actualizado", message, "success");
+          // }
         }
 
         // onReset();

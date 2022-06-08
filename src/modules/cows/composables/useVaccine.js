@@ -9,11 +9,18 @@ const useVaccine = () => {
   const getVaccinesRows = async () => {
     await store.dispatch("cowModule/getVaccinesRows");
   };
-
+  const createVaccine = async (vaccine) => {
+    console.log("model", vaccine);
+    await store.dispatch("cowModule/registerVaccine", vaccine);
+  };
   const addVaccineById = async (id, model) => {
     await store.dispatch("cowModule/addVaccineById", { id, model });
   };
+  const updateVaccine = async (vaccine) => {
+    const resp = await store.dispatch("cowModule/updateVaccine", vaccine);
 
+    return resp;
+  };
   const getVaccinesById = async (id) => {
     await store.dispatch("cowModule/getVaccinesById", id);
   };
@@ -24,6 +31,8 @@ const useVaccine = () => {
   });
 
   return {
+    createVaccine,
+    updateVaccine,
     getVaccines,
     getVaccinesRows,
     getVaccinesById,
