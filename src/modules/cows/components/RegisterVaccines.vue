@@ -29,35 +29,12 @@
       <q-input
         class="col-md-2 col-xs-12 col-sm-5"
         filled
-        type="Number"
-        v-model="vacaForm.age"
-        label="Edad de la vaca *"
-        hint="Ingrese la edad de la vaca"
-        lazy-rules
-        :rules="[
-          (val) => (val !== null && val !== '') || 'Please type your age',
-          (val) => (val > 0 && val < 100) || 'Please type a real age',
-        ]"
-      />
-      <q-input
-        class="col-md-2 col-xs-12 col-sm-5"
-        filled
         type="text"
-        v-model="vacaForm.father"
-        label="Padre de la vaca*"
-        hint="Ingrese el id del padre de la vaca"
+        v-model="vacaForm.description"
+        label="Nombre *"
+        hint="Ingresa tu nombre"
         lazy-rules
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-      />
-      <q-input
-        class="col-md-2 col-xs-12 col-sm-5"
-        filled
-        type="text"
-        v-model="vacaForm.mother"
-        label="Madre de la vaca*"
-        hint="Ingrese el id de la madre de la vaca"
-        lazy-rules
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+        :rules="[(val) => (val && val.length > 0) || 'Por favor escribe algo']"
       />
 
       <div>
@@ -98,7 +75,7 @@ export default {
     });
     onUnmounted(() => {
       if (editingV) {
-        store.commit("cowModule/setVaccines", {});
+        store.commit("cowModule/setVaccine", {});
         store.commit("cowModule/setEditVaccine", "Agregar vacuna");
         store.commit("cowModule/setVaccineEditing", false);
       }
