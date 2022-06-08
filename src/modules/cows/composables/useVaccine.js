@@ -75,7 +75,7 @@ const useVaccine = () => {
       {
         name: "id",
         align: "left",
-        label: "ID vaca",
+        label: "ID vacuna",
         field: "_id",
         sortable: true,
       },
