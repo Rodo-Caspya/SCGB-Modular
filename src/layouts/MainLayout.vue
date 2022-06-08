@@ -63,7 +63,7 @@ const linksList = [
   {
     title: "Vacunas",
     caption: "Agregar vacunas",
-    icon: "las la-plus",
+    icon: "las la-syringe",
     link: "#/vaccines-cows",
   },
   // {
