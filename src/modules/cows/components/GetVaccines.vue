@@ -35,7 +35,7 @@
             class="q-mr-md"
             color="green-7"
             icon="las la-edit"
-            @click="updateCow(props['row'], 'Editar vaca')"
+            @click="updateCow(props['row'], 'Editar vacuna')"
           />
           <q-btn
             dense
@@ -108,7 +108,7 @@ export default {
       updateCow: (cow, edit) => {
         context.emit("tab");
         store.commit("cowModule/setCow", cow);
-        store.commit("cowModule/setEdit", edit);
+        store.commit("cowModule/setEditVaccine", edit);
         store.commit("cowModule/setCowEditing", true);
       },
     };

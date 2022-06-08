@@ -8,6 +8,9 @@ export const setCows = (state, cows) => {
 export const setEdit = (state, edit) => {
   state.editCow = edit;
 };
+export const setEditVaccine = (state, edit) => {
+  state.editVaccine = edit;
+};
 export const setCowEditing = (state, val) => {
   state.edit = val;
 };

@@ -95,7 +95,7 @@ export default {
     onUnmounted(() => {
       if (editing) {
         store.commit("cowModule/setCow", {});
-        store.commit("cowModule/setEdit", "Agregar vaca");
+        store.commit("cowModule/setEditVaccine", "Agregar vacuna");
         store.commit("cowModule/setCowEditing", false);
       }
     });
