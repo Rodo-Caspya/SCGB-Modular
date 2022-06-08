@@ -54,11 +54,10 @@ export async function deleteCow(_, cow) {
 
 // Ingresar vacunas
 export const registerVaccine = async ({ commit }, vaccine) => {
-  console.log("vaccine", vaccine);
   try {
     const { data } = await vacinnesApi.post("/newVacuna", vaccine); //se manda el body como parametros
-    console.log("hecho");
 
+    return { ok: true };
     // if (data.success == true) {
     //   return { ok: true };
     // } else {
@@ -133,7 +132,7 @@ export const getVaccinesById = async ({ commit }, id) => {
 export const addVaccineById = async ({ commit }, { id, model }) => {
   try {
     const { data } = await cowsApi.post(`/addVacuna/${id}`, model);
-    console.log("data eees", data);
+
     // for (var i in data) {
     //   console.log(data[i].name);
     //   vaccines.push(data[i].name);
@@ -153,7 +152,7 @@ export const addVaccineById = async ({ commit }, { id, model }) => {
 export async function updateVaccine(_, vaccine) {
   try {
     await vacinnesApi.put(`/update/${vaccine._id}`, vaccine);
-    // return { ok: true };
+    return { ok: true };
   } catch (e) {
     console.log("Error al editar vaca", e);
     return { ok: false, message: "Error al editar vaca: " + e };

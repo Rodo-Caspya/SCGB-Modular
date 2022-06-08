@@ -21,8 +21,8 @@
         filled
         type="text"
         v-model="vacaForm.name"
-        label="Nombre *"
-        hint="Ingresa tu nombre"
+        label="Nombre de la vacuna*"
+        hint="Ingresa el Nombre de la Vacuna"
         lazy-rules
         :rules="[(val) => (val && val.length > 0) || 'Por favor escribe algo']"
       />
@@ -31,8 +31,8 @@
         filled
         type="text"
         v-model="vacaForm.description"
-        label="Nombre *"
-        hint="Ingresa tu nombre"
+        label="Descripcion de la vacuna *"
+        hint="Ingresa la descripcion de la vacuna"
         lazy-rules
         :rules="[(val) => (val && val.length > 0) || 'Por favor escribe algo']"
       />
@@ -91,24 +91,22 @@ export default {
         if (!store.state.cowModule.editV) {
           // vacaForm.value.id = vacaForm.value._id;
           console.log(vacaForm.value);
-          // const { ok, message } = await createVaccine(vacaForm.value);
-          await createVaccine(vacaForm.value);
-          context.emit("tab");
-          // if (!ok) Swal.fire("Error", message, "error");
-          // else {
-          //   context.emit("tab");
-          //   Swal.fire("Registro exitoso", message, "success");
-          // }
-        } else {
-          // const { ok, message } = await updateCow(vacaForm.value);
-          await updateVaccine(vacaForm.value);
-          context.emit("tab");
-          // if (!ok) Swal.fire("Error", message, "error");
-          // else {
-          //   context.emit("tab");
+          const { ok, message } = await createVaccine(vacaForm.value);
 
-          //   Swal.fire("Registro actualizado", message, "success");
-          // }
+          if (!ok) Swal.fire("Error", message, "error");
+          else {
+            context.emit("tab");
+            Swal.fire("Registro exitoso", message, "success");
+          }
+        } else {
+          const { ok, message } = await updateVaccine(vacaForm.value);
+
+          if (!ok) Swal.fire("Error", message, "error");
+          else {
+            context.emit("tab");
+
+            Swal.fire("Registro actualizado", message, "success");
+          }
         }
 
         // onReset();
