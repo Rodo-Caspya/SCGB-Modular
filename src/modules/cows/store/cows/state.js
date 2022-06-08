@@ -5,9 +5,11 @@ export default function () {
   return {
     cows: [],
     cowSelected: {},
+    vaccineSelected: {},
     editCow: "Agregar vaca",
     editVaccine: "Agregar vacuna",
     edit: false,
+    editV: false,
     // apartado vacunas
     vaccines: [],
     vaccinesRows: [],

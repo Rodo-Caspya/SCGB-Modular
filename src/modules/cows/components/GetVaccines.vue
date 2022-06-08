@@ -107,9 +107,9 @@ export default {
       },
       updateCow: (cow, edit) => {
         context.emit("tab");
-        store.commit("cowModule/setCow", cow);
+        store.commit("cowModule/setVaccine", cow);
         store.commit("cowModule/setEditVaccine", edit);
-        store.commit("cowModule/setCowEditing", true);
+        store.commit("cowModule/setVaccineEditing", true);
       },
     };
   },

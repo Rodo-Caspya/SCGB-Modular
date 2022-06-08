@@ -6,7 +6,7 @@
       class="q-gutter-y-md q-gutter-x-xs row items-start justify-between"
     >
       <q-input
-        :disable="editing"
+        :disable="editingV"
         class="col-md-2 col-xs-12 col-sm-5"
         filled
         type="text"
@@ -16,13 +16,15 @@
         lazy-rules
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
       />
-      <q-select
+      <q-input
         class="col-md-2 col-xs-12 col-sm-5"
         filled
-        v-model="vacaForm.type"
-        hint="VACA / VAQUILLA"
-        :options="options"
-        label="Tipo de vaca*"
+        type="text"
+        v-model="vacaForm.name"
+        label="Nombre *"
+        hint="Ingresa tu nombre"
+        lazy-rules
+        :rules="[(val) => (val && val.length > 0) || 'Por favor escribe algo']"
       />
       <q-input
         class="col-md-2 col-xs-12 col-sm-5"
@@ -77,6 +79,7 @@ import { useQuasar } from "quasar";
 import { ref, onMounted, onUnmounted } from "vue";
 import { useStore } from "vuex";
 import useCow from "../composables/useCow";
+import useVaccine from "../composables/useVaccine";
 import Swal from "sweetalert2";
 export default {
   emits: ["tab"],
@@ -86,23 +89,24 @@ export default {
 
     let vacaForm = ref({});
 
-    const { createCow, updateCow, editing } = useCow();
+    const { createCow, updateCow } = useCow();
+    const { editingV } = useVaccine();
     onMounted(() => {
-      if (editing) {
-        vacaForm.value = store.getters["cowModule/getCowSelected"];
+      if (editingV) {
+        vacaForm.value = store.getters["cowModule/getVaccineSelected"];
       }
     });
     onUnmounted(() => {
-      if (editing) {
-        store.commit("cowModule/setCow", {});
+      if (editingV) {
+        store.commit("cowModule/setVaccines", {});
         store.commit("cowModule/setEditVaccine", "Agregar vacuna");
-        store.commit("cowModule/setCowEditing", false);
+        store.commit("cowModule/setVaccineEditing", false);
       }
     });
 
     return {
       vacaForm,
-      editing,
+      editingV,
       options: ["VACA", "VAQUILLA"],
       onSubmit: async () => {
         if (!store.state.cowModule.edit) {

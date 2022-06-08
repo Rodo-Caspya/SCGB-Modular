@@ -29,6 +29,7 @@ const useVaccine = () => {
     getVaccinesById,
     addVaccineById,
     editVaccine: computed(() => store.state.cowModule.editVaccine),
+    editingV: computed(() => store.state.cowModule.editV),
     vaccinesRows: computed(() => store.state.cowModule.vaccinesRows),
     vaccines: computed(() => store.state.cowModule.vaccines),
     vaccinesById: computed(() => store.state.cowModule.vaccinesById),

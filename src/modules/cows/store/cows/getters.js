@@ -7,6 +7,10 @@ export function getCowSelected(state) {
   const cow = state.cowSelected;
   return { ...cow };
 }
+export function getVaccineSelected(state) {
+  const vaccine = state.vaccineSelected;
+  return { ...vaccine };
+}
 export function getVaccinesById(state) {
   const vaccines = state.vaccinesById;
   return { ...vaccines };
