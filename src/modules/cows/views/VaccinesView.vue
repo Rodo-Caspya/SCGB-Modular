@@ -8,12 +8,12 @@
 
       <q-tabs v-model="tab" class="text-teal">
         <q-tab
-          label="Listado de vacas"
+          label="Listado de vacunas"
           name="one"
           class="col-xs-3 col-sm-6 col-md-5 col-md-6"
         />
         <q-tab
-          :label="editCow"
+          :label="editVaccine"
           name="two"
           class="col-xs-3 col-sm-6 col-md-5 col-md-6"
         />
@@ -35,7 +35,7 @@
 <script>
 import { ref, defineAsyncComponent } from "vue";
 // import { useStore } from "vuex";
-import useCow from "../composables/useCow";
+import useVaccine from "../composables/useVaccine";
 
 export default {
   name: "CowView",
@@ -50,11 +50,11 @@ export default {
 
   setup() {
     // const store = useStore();
-    const { editCow } = useCow();
+    const { editVaccine } = useVaccine();
 
     return {
       tab: ref("one"),
-      editCow,
+      editVaccine,
     };
   },
 };

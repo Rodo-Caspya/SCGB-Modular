@@ -88,6 +88,19 @@ export const getVaccines = async ({ commit }) => {
     // }
   }
 };
+export const getVaccinesRows = async ({ commit }) => {
+  try {
+    const { data } = await vacinnesApi.get("/vacunas");
+
+    commit("setVaccinesRows", data);
+  } catch (e) {
+    console.log(e);
+    console.log("Error al obtener las vacas: ");
+    // } finally {
+    //   commit("setLoading");
+    // }
+  }
+};
 export const getVaccinesById = async ({ commit }, id) => {
   try {
     const { data } = await cowsApi.get(`/getVacunas/${id}`);

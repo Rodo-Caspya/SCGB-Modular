@@ -4,17 +4,17 @@
   <q-btn
     color="positive"
     icon="las la-plus-circle"
-    label="Agregar vaca"
+    label="Agregar vacuna"
     class="q-ma-md"
     @click="$emit('tab')"
   />
   <q-separator />
   <div class="q-pa-md">
     <q-table
-      title="Listado de vacas"
+      title="Listado de vacunass"
       :columns="columns"
-      :rows="cows"
-      :row-key="cows['_id']"
+      :rows="vaccinesRows"
+      :row-key="vaccinesRows['_id']"
       :filter="filter"
       rows-per-page-label="Registros por página"
       :rows-per-page-options="[10, 20, 30]"
@@ -63,17 +63,7 @@
       </template>
     </q-table>
   </div>
-  <q-dialog
-    full-width
-    full-height
-    transition-duration="750"
-    persistent
-    transition-show="slide-down"
-    transition-hide="slide-up"
-    v-model="fixed"
-  >
-    <Vaccine :cow="objectCow" @hide="fixed = false" />
-  </q-dialog>
+
   <!-- <q-btn
     class="q-mr-md"
     color="green-7"
@@ -86,26 +76,20 @@
 import { ref } from "vue";
 import { defineAsyncComponent } from "vue";
 import { useStore } from "vuex";
-import useCow from "../composables/useCow";
+
 import useVaccine from "../composables/useVaccine";
 import Swal from "sweetalert2";
 export default {
   emits: ["tab"],
-  components: {
-    Vaccine: defineAsyncComponent(() => import("./VaccineCows")),
-  },
+
   setup(_, context) {
     const store = useStore();
-    const { cows, columns } = useCow();
-    const { getVaccinesById } = useVaccine();
-    const fixed = ref(false);
-    const objectCow = ref(null);
+    const { vaccinesRows, columns } = useVaccine();
+
     return {
       filter: ref(""),
-      fixed,
+      vaccinesRows,
       columns,
-      cows,
-      objectCow,
 
       deleteCow: async (cow) => {
         const res = Swal.fire({

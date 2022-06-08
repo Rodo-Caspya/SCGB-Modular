@@ -6,9 +6,11 @@ export default function () {
     cows: [],
     cowSelected: {},
     editCow: "Agregar vaca",
+    editVaccine: "Agregar vacuna",
     edit: false,
     // apartado vacunas
     vaccines: [],
+    vaccinesRows: [],
     vaccinesById: [],
   };
 }
