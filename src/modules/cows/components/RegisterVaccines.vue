@@ -5,17 +5,6 @@
       @reset="onReset"
       class="q-gutter-y-md q-gutter-x-xs row items-start justify-between"
     >
-      <!-- <q-input
-        :disable="editingV"
-        class="col-md-2 col-xs-12 col-sm-5"
-        filled
-        type="text"
-        v-model="vacaForm._id"
-        label="ID de la vaca*"
-        hint="Identificación de la vaca"
-        lazy-rules
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-      /> -->
       <q-input
         class="col-md-2 col-xs-12 col-sm-5"
         filled
