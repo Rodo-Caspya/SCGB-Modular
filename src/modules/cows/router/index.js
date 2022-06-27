@@ -1,3 +1,6 @@
+import isAdmin from "../../auth/router/users-gard";
+import isAuthenticatedGuard from "../../auth/router/auth-gard";
+
 export default {
   name: "cows",
   component: () =>
@@ -16,6 +19,7 @@ export default {
     {
       path: "/vaccines-cows",
       name: "vaccines-cows",
+      beforeEnter: [isAuthenticatedGuard && isAdmin],
       component: () =>
         import(/* webpackChunkName: "Login" */ "../views/VaccinesView.vue"),
     },

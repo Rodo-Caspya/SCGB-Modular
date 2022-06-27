@@ -44,15 +44,9 @@ const useVaccine = () => {
     vaccinesById: computed(() => store.state.cowModule.vaccinesById),
     vColumns: [
       {
-        name: "id",
-        align: "left",
-        label: "ID vaca",
-        field: "_id",
-        sortable: true,
-      },
-      {
         name: "vaccineName",
         label: "Nombre de la vacuna",
+        align: "left",
         field: "name",
         sortable: true,
       },
@@ -81,23 +75,19 @@ const useVaccine = () => {
         label: "Acciones",
         align: "left",
       },
-      {
-        name: "id",
-        align: "left",
-        label: "ID vacuna",
-        field: "_id",
-        sortable: true,
-      },
+
       {
         name: "vaccineName",
         label: "Nombre de la vacuna",
         field: "name",
+        align: "left",
         sortable: true,
       },
       {
         name: "vaccineName",
         label: "Descripcion de la vacuna",
         field: "description",
+        align: "left",
         sortable: true,
       },
     ],

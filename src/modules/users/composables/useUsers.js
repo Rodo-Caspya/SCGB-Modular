@@ -32,8 +32,8 @@ const useUser = () => {
         label: "Acciones",
         align: "left",
       },
-      { name: "_id", label: "ID", field: "_id" },
-      { name: "firstname", label: "Nombre", field: "firstname" },
+
+      { name: "firstname", label: "Nombre", field: "firstname", align: "left" },
       { name: "lastname", label: "Apellido", field: "lastname" },
       { name: "username", label: "Usuario", field: "username", sortable: true },
       { name: "email", label: "Correo", field: "email" },
