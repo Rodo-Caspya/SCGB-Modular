@@ -82,7 +82,9 @@ export default {
     const store = useStore();
     const $q = useQuasar();
 
-    let vacaForm = ref({});
+    let vacaForm = ref({
+      mother: "",
+    });
 
     const { createCow, updateCow, editing } = useCow();
     onMounted(() => {

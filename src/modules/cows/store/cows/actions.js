@@ -6,11 +6,19 @@ import cowsApi from "../../../../api/cowsApi";
 import vacinnesApi from "../../../../api/vaccinesApi";
 
 export const registerCow = async ({ commit }, cow) => {
+  console.log(cow);
   try {
     const { data } = await cowsApi.post("/ingresar", cow); //se manda el body como parametros
 
     if (data.success == true) {
       return { ok: true };
+    } else if (
+      data == "La vaca madre que usted ingresó no se encuentra registrada"
+    ) {
+      return {
+        ok: false,
+        message: "La vaca madre que usted ingresó no se encuentra registrada",
+      };
     } else {
       return {
         ok: false,
