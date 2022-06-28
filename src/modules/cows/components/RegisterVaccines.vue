@@ -6,7 +6,7 @@
       class="q-gutter-y-md q-gutter-x-xs row items-start justify-between"
     >
       <q-input
-        class="col-md-2 col-xs-12 col-sm-5"
+        class="col-xl-5 col-md-5 col-xs-12 col-sm-12"
         filled
         type="text"
         v-model="vacaForm.name"
@@ -16,7 +16,7 @@
         :rules="[(val) => (val && val.length > 0) || 'Por favor escribe algo']"
       />
       <q-input
-        class="col-md-2 col-xs-12 col-sm-5"
+        class="col-xl-5 col-md-5 col-xs-12 col-sm-12"
         filled
         type="text"
         v-model="vacaForm.description"

@@ -14,7 +14,9 @@
         label="ID de la vaca*"
         hint="Identificación de la vaca"
         lazy-rules
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+        :rules="[
+          (val) => (val && val.length > 0) || 'Escriba un Identificador valido',
+        ]"
       />
       <q-select
         class="col-md-2 col-xs-12 col-sm-5"
@@ -23,6 +25,11 @@
         hint="VACA / VAQUILLA"
         :options="options"
         label="Tipo de vaca*"
+        lazy-rules
+        :rules="[
+          (val) => (val && val.length > 0) || 'Este campo es obligatorio',
+          isValidEmail,
+        ]"
       />
       <q-input
         class="col-md-2 col-xs-12 col-sm-5"
@@ -33,8 +40,8 @@
         hint="Ingrese la edad de la vaca"
         lazy-rules
         :rules="[
-          (val) => (val !== null && val !== '') || 'Please type your age',
-          (val) => (val > 0 && val < 100) || 'Please type a real age',
+          (val) => (val !== null && val !== '') || 'Escribe la edad de la vaca',
+          (val) => (val > 0 && val < 25) || 'Escribe una edad valida',
         ]"
       />
       <!-- <q-input
@@ -53,7 +60,7 @@
         type="text"
         v-model="vacaForm.mother"
         label="Madre de la vaca*"
-        hint="Ingrese el id de la madre de la vaca"
+        hint="Ingrese el id de la madre de la vaca o deje vacío"
       />
 
       <div>
@@ -80,12 +87,8 @@ export default {
   emits: ["tab"],
   setup(_, context) {
     const store = useStore();
-    const $q = useQuasar();
 
-    let vacaForm = ref({
-      mother: "",
-    });
-
+    let vacaForm = ref({});
     const { createCow, updateCow, editing } = useCow();
     onMounted(() => {
       if (editing) {
@@ -107,6 +110,7 @@ export default {
       onSubmit: async () => {
         if (!store.state.cowModule.edit) {
           vacaForm.value.id = vacaForm.value._id;
+
           const { ok, message } = await createCow(vacaForm.value);
           if (!ok) Swal.fire("Error", message, "error");
           else {
