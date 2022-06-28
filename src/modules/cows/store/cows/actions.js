@@ -6,7 +6,6 @@ import cowsApi from "../../../../api/cowsApi";
 import vacinnesApi from "../../../../api/vaccinesApi";
 
 export const registerCow = async ({ commit }, cow) => {
-  console.log(cow);
   try {
     const { data } = await cowsApi.post("/ingresar", cow); //se manda el body como parametros
 
