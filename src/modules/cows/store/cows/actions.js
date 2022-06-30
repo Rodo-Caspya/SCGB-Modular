@@ -6,7 +6,6 @@ import cowsApi from "../../../../api/cowsApi";
 import vacinnesApi from "../../../../api/vaccinesApi";
 
 export const registerCow = async ({ commit }, cow) => {
-  console.log(cow);
   try {
     const { data } = await cowsApi.post("/ingresar", cow); //se manda el body como parametros
 
@@ -131,7 +130,6 @@ export const getVaccinesById = async ({ commit }, id) => {
   try {
     const { data } = await cowsApi.get(`/getVacunas/${id}`);
     commit("setVaccinesById", data);
-    console.log("data", data);
   } catch (e) {
     console.log(e);
     console.log("Error al obtener las vacas: ");
