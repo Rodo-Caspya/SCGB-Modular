@@ -1,7 +1,7 @@
 // export const myAction = async ({ commit }) => { las acciones normalmente son asincronas
 
 // }
-import { useStore } from "vuex";
+import { Store } from "../../../../store";
 
 import usersApi from "../../../../api/usersApi";
 export const registerUser = async ({ commit }, user) => {
@@ -23,13 +23,13 @@ export const registerUser = async ({ commit }, user) => {
 };
 
 export const getUsers = async ({ commit }) => {
-  const store = useStore();
   try {
     const { data } = await usersApi.get("/consultar");
     let index = data.findIndex(
-      (el) => el.username == store.state.authModule.user.username
+      (el) => el.username == Store.state.authModule.user.username
     );
     data.splice(index, 1);
+
     commit("setUsers", data);
   } catch (e) {
     console.log("Error al obtener los usuarios: ");
