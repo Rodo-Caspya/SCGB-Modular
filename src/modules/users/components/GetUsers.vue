@@ -12,7 +12,7 @@
 
   <div class="q-pa-md">
     <q-table
-      title="Listado de vacas"
+      title="Listado de usuarios"
       :columns="columns"
       :rows="users"
       :row-key="users['_id']"
