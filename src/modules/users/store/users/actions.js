@@ -26,9 +26,11 @@ export const getUsers = async ({ commit }) => {
   const store = useStore();
   try {
     const { data } = await usersApi.get("/consultar");
-
+    // let index = data.findIndex(
+    //   (el) => el.username == store.state.authModule.user.username
+    // );
+    // delete data[index];
     commit("setUsers", data);
-    console.log(store.state.authModule.user);
   } catch (e) {
     console.log("Error al obtener los usuarios: ");
     // } finally {

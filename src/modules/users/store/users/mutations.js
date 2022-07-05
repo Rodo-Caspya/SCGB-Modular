@@ -1,8 +1,14 @@
 // export const myMutation =  ( state ) => { las mutations siempre son sincronas
 
 // }
+import { useStore } from "vuex";
 
 export const setUsers = (state, users) => {
+  // let index = user.map((user = user.username)).indexOF("test");
+  // console.log(index);
+  // let index = users.findIndex((el) => el.username ==  );
+  // console.log(index);
+
   state.users = users;
 };
 export const setEdit = (state, edit) => {
