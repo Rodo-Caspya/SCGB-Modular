@@ -11,8 +11,8 @@
         filled
         type="text"
         v-model="vacaForm._id"
-        label="ID de la vaca*"
-        hint="Identificación de la vaca"
+        label="Crotal*"
+        hint="Identificador de la vaca"
         lazy-rules
         :rules="[(val) => (val && val.length > 0) || 'Please type something']"
       />

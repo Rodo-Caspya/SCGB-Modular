@@ -37,7 +37,7 @@ const useCow = () => {
       {
         name: "id",
         align: "left",
-        label: "ID vaca",
+        label: "Crotal",
         field: "_id",
       },
       {
