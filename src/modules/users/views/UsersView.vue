@@ -25,7 +25,7 @@
         </q-tab-panel>
 
         <q-tab-panel name="two">
-          <RegisterCow />
+          <RegisterCow @tab="tab = 'one'" />
         </q-tab-panel>
       </q-tab-panels>
     </q-card>
@@ -34,7 +34,7 @@
 
 <script>
 import { ref, defineAsyncComponent } from "vue";
-import useUser from '../composables/useUsers';
+import useUser from "../composables/useUsers";
 export default {
   name: "UsersView",
   components: {
@@ -44,10 +44,10 @@ export default {
     ),
   },
   setup() {
-    const {editUser} = useUser();
-     return {
+    const { editUser } = useUser();
+    return {
       tab: ref("one"),
-      editUser
+      editUser,
     };
   },
 };

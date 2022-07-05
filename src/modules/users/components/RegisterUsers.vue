@@ -130,7 +130,6 @@ export default {
           if (!ok) Swal.fire("Error", message, "error");
           else {
             context.emit("tab");
-            console.log("hi");
             Swal.fire("Registro exitoso", message, "success");
           }
         } else {
