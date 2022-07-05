@@ -21,11 +21,11 @@
 
       <q-tab-panels v-model="tab" animated>
         <q-tab-panel name="one">
-          <GetCows @tab="tab = 'two'" />
+          <GetUsers @tab="tab = 'two'" />
         </q-tab-panel>
 
         <q-tab-panel name="two">
-          <RegisterCow @tab="tab = 'one'" />
+          <RegisterUsers @tab="tab = 'one'" />
         </q-tab-panel>
       </q-tab-panels>
     </q-card>
@@ -38,8 +38,8 @@ import useUser from "../composables/useUsers";
 export default {
   name: "UsersView",
   components: {
-    GetCows: defineAsyncComponent(() => import("../components/GetUsers.vue")),
-    RegisterCow: defineAsyncComponent(() =>
+    GetUsers: defineAsyncComponent(() => import("../components/GetUsers.vue")),
+    RegisterUsers: defineAsyncComponent(() =>
       import("../components/RegisterUsers.vue")
     ),
   },

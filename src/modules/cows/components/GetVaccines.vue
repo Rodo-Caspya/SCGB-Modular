@@ -11,7 +11,7 @@
   <q-separator />
   <div class="q-pa-md">
     <q-table
-      title="Listado de vacunass"
+      title="Listado de vacunas"
       :columns="columns"
       :rows="vaccinesRows"
       :row-key="vaccinesRows['_id']"
