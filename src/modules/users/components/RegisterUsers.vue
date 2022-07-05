@@ -97,7 +97,7 @@ import useUser from "../composables/useUsers";
 import Swal from "sweetalert2";
 
 export default {
-  mits: ["tab"],
+  emits: ["tab"],
   setup(_, context) {
     const store = useStore();
     const $q = useQuasar();
@@ -130,6 +130,7 @@ export default {
           if (!ok) Swal.fire("Error", message, "error");
           else {
             context.emit("tab");
+            console.log("hi");
             Swal.fire("Registro exitoso", message, "success");
           }
         } else {
