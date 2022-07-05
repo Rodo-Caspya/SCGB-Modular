@@ -14,7 +14,10 @@
         label="Crotal*"
         hint="Identificador de la vaca"
         lazy-rules
-        :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+        :rules="[
+          (val) =>
+            (val && val.length > 0) || 'Por favor escribe un Identificador',
+        ]"
       />
       <q-select
         class="col-md-2 col-xs-12 col-sm-5"
@@ -33,8 +36,8 @@
         hint="Ingrese la edad de la vaca"
         lazy-rules
         :rules="[
-          (val) => (val !== null && val !== '') || 'Please type your age',
-          (val) => (val > 0 && val < 100) || 'Please type a real age',
+          (val) => (val !== null && val !== '') || 'Ingresa una edad real',
+          (val) => (val > 0 && val < 100) || 'Ingresa una edad real',
         ]"
       />
       <!-- <q-input
